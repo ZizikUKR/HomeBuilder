@@ -1,0 +1,45 @@
+<section class="home-builder">
+  <h2 class="title">Homebuilder</h2>
+  <div class="board">
+    <header class="header">
+      <button class="button button-add" type="button" (click)="openCreateItemModal()">Add&nbsp;Items</button>
+      <div class="header-section">
+        <label class="search">
+          <input class="search-input" type="search" placeholder="Search">
+        </label>
+        <button class="button" type="button">
+          <mat-icon aria-hidden="false">keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+    </header>
+    <ul class="list" *ngIf="toDoList.length > 0">
+      <li class="item" *ngFor="let item of toDoList">  
+        <div class="item-section">
+          <button (click)="updateStatus(item)" class="button" [ngClass]="{active: item?.isComppleted}" type="button">
+            <mat-icon aria-hidden="false">check_circle_outline</mat-icon>
+          </button>
+          <button class="button"(click)="openDeleteModal(item)" [ngClass]="{active: true}" type="button">
+            <mat-icon aria-hidden="false">delete</mat-icon>
+          </button>
+        </div>
+        <div class="item-section section-info">
+          <p class="item-title">{{item?.toDo}}</p>
+          <p class="item-description">{{item?.description}}</p>
+        </div>
+        <div class="item-section ">
+          <p>{{item?.information}}</p>
+          <p class="chips" [ngClass]='getChipsColour(item?.state)'>
+            {{item.state}}
+          </p>
+        </div>
+        <div class="item-section">
+          <div class="avatar">
+            <img src="../../../assets/images/avatar/avatar.png" alt="avatar">
+          </div>
+        </div>
+
+      </li>
+    </ul>
+
+  </div>
+</section>

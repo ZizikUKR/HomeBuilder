@@ -1,0 +1,57 @@
+//color
+$white:           #ffffff;
+$black:           #000000;
+$liteBlack:       #383838; //primaryFont
+$blue:            #4C84ff;
+$liteBlue:        #00CEC1; //deposit
+$yellow:          #ffc100;
+$green:           #00b77e;
+$liteGreen:       #00D290;
+$red:             #ff5560;
+$gray:            #8f99a1; //secondFont 
+$liteGray:        #DADADA; //icon
+$gray100:         #FCFCFC; //background-color_primary
+$gray200:         #C2CCD1; //border
+$gray300:         #afb8Bf; //dots
+$purple:          #DB5FFC;
+
+//outline color
+$outlineColor:    #4D90FE;
+
+//font-weight
+$thinFont:        100;
+$extraLightFont:  200;
+$lightFont:       300;
+$regularFont:     400;
+$mediumFont:      500;
+$semiBoldFont:    600;
+$boldFont:        700;
+$extraBoldFont:   800;
+$blackFont:       900;
+
+//figure
+$octagonHalfDown: polygon(100% 0, 100% 45%, 75% 100%, 25% 100%, 0 50%, 0 0);
+$hexagon: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+$hexagonHalfDown: polygon(100% 50%,75% 100%,25% 100%,0 50%);
+$cornerRibbon: polygon(29% 0%, 70% 0%, 100% 95%, 100% 135%, 90% 100%, 8.4% 100%, 0 128%, 0 95%);
+
+
+/////////////////
+/////setting/////
+/////////////////
+
+/* Theme UI */
+$primaryBackgroundColor: $gray100;
+$secondBackgroundColor: $white;
+$primaryFontColor: $liteBlack;
+$secondFontColor: $gray;
+$primaryBorderColor: $gray200;
+$headerShadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+$boardShadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+$iconColor: $liteGray;
+$iconColorHover: $gray;
+
+//font-family
+$primaryFontFamily: 'Actor', sans-serif;
+$secondFontFamily: 'Proxima Nova Rg', sans-serif;
+

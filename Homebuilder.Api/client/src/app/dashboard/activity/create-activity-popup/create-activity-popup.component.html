@@ -1,0 +1,44 @@
+<button class="button button-add" type="button" (click)="showChildModal()">Add&nbsp;Activity</button>
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title pull-left">Child modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="toDoForm">
+          <section id="modal-body">
+              <div class="form-group">
+                  <label>ToDo
+                      <input class="form-control" placeholder="toDo" formControlName="toDo">
+                  </label>
+              </div>
+              <div class="form-group">
+                  <label>Description
+                      <input class="form-control" placeholder="description" formControlName="description">
+                  </label>
+              </div>
+              <div class="form-group">
+                  <label>Information
+                      <input class="form-control" placeholder="information" formControlName="information">
+                  </label>
+              </div>
+  
+          </section>
+          <footer id="modal-footer">
+              <button mat-raised-button [disabled]="!toDoForm.valid" id="modal-action-button" (click)="onCreate()">
+                  Create
+              </button>
+              <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">
+                  Cancel
+              </button>
+          </footer>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

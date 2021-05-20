@@ -1,0 +1,314 @@
+<section class="activity">
+  <h2 class="title">Activity</h2>
+  <div class="board">
+    <header class="header">
+      <app-create-activity-popup></app-create-activity-popup>
+      <!-- <label class="search">
+        <mat-icon aria-hidden="false">search</mat-icon>
+        <input class="search-input" type="search" placeholder="Search">
+      </label> -->
+      <div class="header-section">
+        <label class="search">
+          <input class="search-input" type="search" placeholder="Search">
+        </label>
+        <button class="button" type="button">
+          <mat-icon aria-hidden="false">keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+    </header>
+
+    <ul class="articles" *ngIf="activities.length > 0">
+
+      <li class="article">
+        <div class="article-logo">
+          <img src="../../../assets/images/avatar/user-placeholder.png" alt="avatar">
+        </div>
+        <div class="post">
+          <div class="post-content">
+            <div class="post-header">
+              <div class="post-info">
+                <p class="post-title">
+                  <span class="post-name author">John R. Doe </span> 
+                  <span class="post-event">Uploaded Photos</span>
+                </p>
+                <div class="address">
+                  <p>365 Boyer Circle, Lafayette</p>
+                  <span class="code">#DE80090</span>
+                </div>
+                <p class="date">
+                  <time datetime="2018-07-07T13:22:00">Today at 1:22pm</time>
+                </p>
+              </div>
+            </div>
+            <ul class="list">
+              <li class="item">
+                <img class="photo" src="../../../assets/images/picture/home.jpg" alt="img">
+              </li>
+              <li class="item">
+                <img class="photo" src="../../../assets/images/picture/home.jpg" alt="img">
+              </li>
+              <li class="item">
+                <img class="photo" src="../../../assets/images/picture/home.jpg" alt="img">
+              </li>
+              <li class="item">
+                <img class="photo" src="../../../assets/images/picture/home.jpg" alt="img">
+              </li>
+            </ul>
+            <button class="button button-view" type="button">
+              View All Photos
+            </button>
+          </div>
+        </div>
+        <div class="article-action">
+          <div class="dropdown" *ngIf="true">
+            <button class="button" [ngClass]="{active: false}" type="button" (click)="toggleViewDropdawn($event)">
+              <mat-icon aria-hidden="false">add_circle_outline</mat-icon>
+            </button>
+          
+            <ul class="drop-menu">
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Review</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Massage</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">calendar_today</mat-icon>
+                  <span>Reschedule</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+
+      <li class="article poll" *ngFor="let item of activities">
+        <div class="article-logo">
+          <mat-icon aria-hidden="false">notifications_none</mat-icon>
+        </div>
+        <div class="post">
+          <div class="post-content">
+            <div class="post-header">
+              <div class="post-info">
+                <p class="post-title">
+                  <span class="post-name">{{item?.title}} </span> 
+                  <span class="post-event warning">{{item?.scheduledDate}}</span>
+                </p>
+                <div class="address">
+                  <p>{{item?.description}}</p>
+                  <span class="code">{{item?.code}}</span>
+                </div>
+                <p class="date">
+                  <time datetime="2018-07-07T22:22:00">{{item?.creationDate}}</time>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-action">
+          <div class="dropdown" *ngIf="true">
+            <button class="button" [ngClass]="{active: false}" type="button" (click)="toggleViewDropdawn($event)">
+              <mat-icon aria-hidden="false">add_circle_outline</mat-icon>
+            </button>
+          
+            <ul class="drop-menu">
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Review</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Massage</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">calendar_today</mat-icon>
+                  <span>Reschedule</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <!-- <li class="article">
+        <div class="article-logo">
+          <img src="../../../assets/images/avatar/user-placeholder.png" alt="avatar">
+        </div>
+        <div class="post">
+          <div class="post-content">
+            <div class="post-header">
+              <div class="post-info">
+                <p class="post-title">
+                  <span class="post-name author">Layla R. Hue </span> 
+                  <span class="post-event">Scheduled Site Visit November 10, 2017, 10:15am </span>
+                </p>
+                <div class="address">
+                  <p>365 Boyer Circle, Lafayette</p>
+                  <span class="code">#DE80090</span>
+                </div>
+                <p class="date">
+                  <time datetime="2018-07-07T22:22:00">Today at 10:22pm</time>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-action">
+          <div class="dropdown" *ngIf="true">
+            <button class="button" [ngClass]="{active: false}" type="button" (click)="toggleViewDropdawn($event)">
+              <mat-icon aria-hidden="false">add_circle_outline</mat-icon>
+            </button>
+          
+            <ul class="drop-menu">
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Review</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Massage</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">calendar_today</mat-icon>
+                  <span>Reschedule</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="article deposit">
+        <div class="article-logo">
+          <mat-icon aria-hidden="false">description</mat-icon>
+        </div>
+        <div class="post">
+          <div class="post-content">
+            <div class="post-header">
+              <div class="post-info">
+                <p class="post-title">
+                  <span class="post-name">Deposit Invoice Paid </span> 
+                  <span class="post-event"></span>
+                </p>
+                <div class="address">
+                  <p>$2,500.00</p>
+                  <span class="code">#DE80090</span>
+                </div>
+                <p class="date">
+                  <time datetime="2018-07-07T22:22:00">Today at 10:22pm</time>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-action">
+          <div class="dropdown" *ngIf="true">
+            <button class="button" [ngClass]="{active: false}" type="button" (click)="toggleViewDropdawn($event)">
+              <mat-icon aria-hidden="false">add_circle_outline</mat-icon>
+            </button>
+          
+            <ul class="drop-menu">
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Review</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Massage</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">calendar_today</mat-icon>
+                  <span>Reschedule</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="article contract">
+        <div class="article-logo">
+          <mat-icon aria-hidden="false">note_add</mat-icon>
+        </div>
+        <div class="post">
+          <div class="post-content">
+            <div class="post-header">
+              <div class="post-info">
+                <p class="post-title">
+                  <span class="post-name">Contract Signed</span> 
+                  <span class="post-event"></span>
+                </p>
+                <div class="address">
+                  <p>200 Simpson Dr., Berkeley </p>
+                  <span class="code">#DE80090</span>
+                </div>
+                <p class="date">
+                  <time datetime="2017-07-20T14:00:00">September 20, 2017 at 2:00pm</time>
+                </p>
+              </div>
+            </div>
+            <div class="action">
+              <button class="button" [ngClass]="{active: false}" type="button">
+                <mat-icon aria-hidden="false">attach_file</mat-icon>
+                <span>View Contract</span>
+              </button>
+              <button class="button" [ngClass]="{active: false}" type="button">
+                <mat-icon aria-hidden="false">edit</mat-icon>
+                  <span>Sign Contract</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="article-action">
+          <div class="dropdown" *ngIf="true">
+            <button class="button" [ngClass]="{active: false}" type="button" (click)="toggleViewDropdawn($event)">
+              <mat-icon aria-hidden="false">add_circle_outline</mat-icon>
+            </button>
+          
+            <ul class="drop-menu">
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Review</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">chat</mat-icon>
+                  <span>Massage</span>
+                </button>
+              </li>
+              <li class="drop-item">
+                <button class="button" type="button">
+                  <mat-icon aria-hidden="false">calendar_today</mat-icon>
+                  <span>Reschedule</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li> -->
+    </ul>
+  </div>
+</section>

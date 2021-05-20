@@ -1,0 +1,130 @@
+@import 'src/assets/sass/vars';
+.header {
+  background-color: $secondBackgroundColor;
+  box-shadow: $headerShadow;
+  position: relative;
+
+  .container-template {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 13px;
+  }
+  
+  .logo {
+    display: block;
+    max-width: 50px;
+  }
+
+  .section {
+    display: flex;
+    .action {
+      display: flex;
+      align-items: center;
+      .button {
+        display: block;
+        width: 30px;
+        margin: 0 5px 0 0;
+        @media(min-width: 400px) {
+          width: 40px;
+          margin: 0 10px 0 0;
+        }
+        .mat-icon {
+          font-size: 20px;
+          @media(min-width: 400px) {
+            font-size: 30px;
+          }
+        }
+        &.notification {
+          position: relative;
+          .counter {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            background-color: $blue;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid $white;
+            color: $white;
+            font-family: $secondFontFamily;
+            font-size: 0px;
+            line-height: 10px;
+            @media(min-width: 400px) {
+              width: 16px;
+              height: 16px;
+              line-height: 16px;
+              font-size: 9px;
+            }
+          }
+        }
+      }
+    }
+    .avatar {
+      max-width: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+
+}
+
+.nav {
+  flex-grow: 1;
+  align-self: stretch;
+
+  &-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    text-align: center;
+    margin: -10px 0;
+    
+    min-width: 90vw;
+    background-color: $white;
+    border: 1px solid $primaryBorderColor;
+    border-radius: 5px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    z-index: 200;
+    .button-nav {
+      padding: 10px 0;
+      & + .button-nav {
+        margin: 10px auto 0 auto;
+      }
+    }
+
+    @media(min-width: 992px) {
+      position: static;
+      display: flex;
+      min-width: auto;
+      border: none;
+      box-shadow: none;
+      flex-grow: 1;
+      transform: none;
+      justify-content: center;
+      align-items: stretch;
+      .button-nav {
+        padding: 10px;
+        & + .button-nav {
+          margin: 0 0 0 40px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 992px) {
+  .nav-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height .2s , opacity .5s;
+  }
+  .nav-menu.open {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
