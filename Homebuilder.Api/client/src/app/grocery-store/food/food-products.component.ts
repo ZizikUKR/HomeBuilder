@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ToastrService } from "ngx-toastr";
 import { Subscription } from "rxjs/internal/Subscription";
 import { DeleteModalComponent } from "src/app/shared/modals/delete-modal.component";
+import { MonthEnum } from "src/app/shared/models/enums/month-enum";
 import { FoodProductGetAllViewItem } from "src/app/shared/models/food-products/food-product-get-all-view-item";
 import { HomeBuilderConstants } from "src/app/shared/models/home-builder.constants";
 import { FoodProductService } from "src/app/shared/services/food-product.service";
@@ -17,6 +18,8 @@ import { CreateFoodProductPopupComponent } from "./create-food-product-popup/cre
 export class FoodProductsComponent implements OnInit {     
     public foodProducts: FoodProductGetAllViewItem[] = [];
     public subscription: Subscription;
+    public months: string[];
+
 
     constructor(private foodProductService: FoodProductService,
         public matDialog: MatDialog,
@@ -25,10 +28,7 @@ export class FoodProductsComponent implements OnInit {
 
     ngOnInit(): void {
         this.getFoodProducts();
-    }
-
-    private writeChart(): void {
-    
+        this.months = Object.keys(MonthEnum).filter(f => isNaN(Number(f)));
     }
 
     private getFoodProducts(): void {

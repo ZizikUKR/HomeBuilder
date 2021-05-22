@@ -41,7 +41,6 @@ export class CreateFoodProductPopupComponent implements OnInit {
 
   private getCreationData(): void {
     this.subscription = this.categoryService.getProductCreationData().subscribe(res => {
-      debugger;
       this.foodCategories = res.categories;
       this.subscription.unsubscribe();
 
