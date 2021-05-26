@@ -33,7 +33,7 @@ export class FoodChartComponent implements OnInit {
     responsive: true
   };
   public pieChartLabels: Label[] = [];
-  public pieChartData: SingleDataSet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15];
+  public pieChartData: SingleDataSet = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
@@ -60,7 +60,6 @@ export class FoodChartComponent implements OnInit {
       this.barChartData = [{ data: res.monthPrices, label: 'Food Spends' }];
       this.pieChartLabels = res.currentMonthCategories;
       this.pieChartData = res.currentMontCategoryPrices;
-
       monkeyPatchChartJsTooltip();
       monkeyPatchChartJsLegend();
       this.subscription.unsubscribe();
@@ -68,6 +67,7 @@ export class FoodChartComponent implements OnInit {
   }
 
   public onMonthChange(event: any): void {
+    this.pieChartData = [];
     this.getFoodMonthChartData(this.currentMonth);
   }
 
