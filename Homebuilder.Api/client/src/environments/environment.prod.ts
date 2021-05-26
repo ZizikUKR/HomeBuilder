@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'https://homebuilder.anuitexportal.com/api/',
+  apiUrl: 'https://homebuildertestapi.azurewebsites.net/api/',
   production: true
 };

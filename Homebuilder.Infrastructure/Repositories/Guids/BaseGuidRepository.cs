@@ -7,10 +7,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 
 namespace Homebuilder.Infrastructure.Repositories.Guids
 {
-    public class BaseGuidRepository<T> : IBaseGuidRepository<T> where T : BaseGuidEntity
+    public class BaseGuidRepository<T> : IBaseGuidRepository<T> where T : BaseStringEntity
     {
         protected readonly string _tableName;
         private string _connectionString;
@@ -19,16 +20,16 @@ namespace Homebuilder.Infrastructure.Repositories.Guids
         {
             get
             {
-                return new SqlConnection(_connectionString);
+                return new SqliteConnection(_connectionString);
             }
         }
         public BaseGuidRepository(IConfiguration configuration, string tableName)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _connectionString = configuration.GetConnectionString("SqliteDB");
             _tableName = tableName;
         }
 
-        public async Task<T> Get(Guid id)
+        public async Task<T> Get(string id)
         {
             return await Connection.GetAsync<T>(id);
         }

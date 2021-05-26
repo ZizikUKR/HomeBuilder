@@ -42,7 +42,7 @@ namespace Homebuilder.Domain.Commands.Guids.Foods
                 await _repository.Add(MapUtilityBillViewToModel(request, category.Id));
             }
 
-            private FoodProduct MapUtilityBillViewToModel(Command command, Guid categoryId)
+            private FoodProduct MapUtilityBillViewToModel(Command command, string categoryId)
             {
                 var res = new FoodProduct();
                 res.Month = command.Month;

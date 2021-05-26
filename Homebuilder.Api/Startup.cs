@@ -40,7 +40,8 @@ namespace Homebuilder.Api
             services.AddMvc(setup => {
                 //...mvc setup...
             }).AddFluentValidation();
-            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            //var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var connectionString = Configuration.GetConnectionString("SqliteDB");
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Homebuilder API", Version = "v1" });

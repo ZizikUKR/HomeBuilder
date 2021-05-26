@@ -9,7 +9,7 @@ namespace Homebuilder.Domain
         {
             var assemblyName = Assembly.GetExecutingAssembly();
             var upgrader = DeployChanges.To
-                .SqlDatabase(connString)
+                .SQLiteDatabase(connString)
                 .WithScriptsEmbeddedInAssembly(assemblyName)
                 .LogToAutodetectedLog()
                 .Build();

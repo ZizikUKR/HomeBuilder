@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 
 namespace Homebuilder.Infrastructure.Repositories.Longs
 {
@@ -21,12 +22,12 @@ namespace Homebuilder.Infrastructure.Repositories.Longs
         {
             get
             {
-                return new SqlConnection(_connectionString);
+                return new SqliteConnection(_connectionString);
             }
         }
         public BaseLongRepository(IConfiguration configuration, string tableName)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _connectionString = configuration.GetConnectionString("SqliteDB");
             _tableName = tableName;
         }
 

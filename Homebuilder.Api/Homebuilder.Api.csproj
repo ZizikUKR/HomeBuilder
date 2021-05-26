@@ -5,6 +5,7 @@
       <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <TypeScriptToolsVersion>3.5</TypeScriptToolsVersion>
+    <UserSecretsId>75ddc047-18d3-4be1-8fe4-2c19a70a3c9a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

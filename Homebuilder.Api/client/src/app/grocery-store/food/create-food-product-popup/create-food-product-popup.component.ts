@@ -23,7 +23,7 @@ export class CreateFoodProductPopupComponent implements OnInit {
   public foodCategories: string[];
 
   public filteredOptions: Observable<string[]>;
-  public myControl = new FormControl();
+  public myControl = new FormControl('', Validators.required);
 
 
   constructor(
@@ -54,15 +54,20 @@ export class CreateFoodProductPopupComponent implements OnInit {
   }
 
   private filterCategories(value: string): string[] {
-    const filterValue = value.toLowerCase();
+    if (value) {
+      const filterValue = value.toLowerCase();
 
-    return this.foodCategories.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+      return this.foodCategories.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    }
   }
 
   private initForm(): void {
+    debugger;
+    const currentDate = new Date();
+    let s = currentDate.getMonth();
     this.foodProductForm = new FormGroup({
-      month: new FormControl('', Validators.required),
-      year: new FormControl('', Validators.required),
+      month: new FormControl(currentDate.getMonth() + 1, Validators.required),
+      year: new FormControl(currentDate.getFullYear(), Validators.required),
       price: new FormControl('', Validators.required),
       orderDay: new FormControl('', Validators.required),
       category: this.myControl

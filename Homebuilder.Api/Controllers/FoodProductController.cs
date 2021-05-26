@@ -36,7 +36,7 @@ namespace Homebuilder.Api.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<ActionResult> Delete(string id)
         {
             await _mediator.Send(new DeleteFoodProductCommand.Command { Id = id });
             return Ok();

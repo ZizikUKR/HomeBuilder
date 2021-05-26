@@ -12,7 +12,7 @@ namespace Homebuilder.Domain.Commands.Guids.Foods
     {
         public class Command : IRequest
         {
-            public Guid Id { get; set; }
+            public string Id { get; set; }
             public int Year { get; set; }
             public decimal Price { get; set; }
             public int Month { get; set; }
@@ -52,7 +52,7 @@ namespace Homebuilder.Domain.Commands.Guids.Foods
                 await _repository.Update(foodProduct);
             }
 
-            private void MapUtilityBillViewToModel(FoodProduct bill, Command request, Guid categoryId)
+            private void MapUtilityBillViewToModel(FoodProduct bill, Command request, string categoryId)
             {
                 bill.Price = request.Price;
                 bill.Month = request.Month;

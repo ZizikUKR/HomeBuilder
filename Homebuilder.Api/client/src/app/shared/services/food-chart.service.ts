@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -12,7 +12,13 @@ export class FoodChartService {
 
     constructor(private http: HttpClient) { }
 
-    public getMonthFoodChartData(): Observable<GetMonthFoodChartDataView> {
-        return this.http.get<GetMonthFoodChartDataView>(this.rootUrl + 'foodChart/getFoodChartData');
+    public getMonthFoodChartData(month: string): Observable<GetMonthFoodChartDataView> {
+        const params = new HttpParams({
+            fromObject: {
+                month: month
+            }
+        });
+
+        return this.http.get<GetMonthFoodChartDataView>(this.rootUrl + 'foodChart/getFoodChartData', { params: params });
     }
 }

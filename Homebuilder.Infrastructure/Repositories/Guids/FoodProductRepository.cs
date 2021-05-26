@@ -16,7 +16,8 @@ namespace Homebuilder.Infrastructure.Repositories.Guids
         public async Task<IEnumerable<FoodProduct>> GetAllWithCategory()
         {
             string sql = $@"SELECT * FROM {_tableName} AS FP
-                            INNER JOIN FoodCategories AS FC ON FP.CategoryId =FC.Id";
+                            INNER JOIN FoodCategories AS FC ON FP.CategoryId =FC.Id
+                            ORDER BY CreationDate DESC";
 
             var res = await Connection.QueryAsync<FoodProduct, FoodCategory, FoodProduct>(sql, map: (p, c) =>
             {

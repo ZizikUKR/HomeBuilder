@@ -1,13 +1,12 @@
-﻿using System;
-using Homebuilder.Domain.Entities.Guids;
+﻿using Homebuilder.Domain.Entities.Guids;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Homebuilder.Domain.Repositories.Guids
 {
-    public interface IBaseGuidRepository<T> where T : BaseGuidEntity
+    public interface IBaseGuidRepository<T> where T : BaseStringEntity
     {
-        Task<T> Get(Guid id);
+        Task<T> Get(string id);
 
         Task<IEnumerable<T>> GetAll();
 
