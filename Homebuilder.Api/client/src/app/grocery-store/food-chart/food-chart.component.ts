@@ -27,8 +27,8 @@ export class FoodChartComponent implements OnInit {
 
   // Pie
   public pieChartOptions: ChartOptions = {
-    legend:{
-      display:false
+    legend: {
+      display: false
     },
     responsive: true
   };
@@ -47,6 +47,7 @@ export class FoodChartComponent implements OnInit {
     this.initializeFilters();
     const currentDate = new Date();
     this.currentMonth = this.months[currentDate.getMonth() + 1];
+    this.currentYear = currentDate.getFullYear().toString();
     this.getFoodMonthChartData(this.currentMonth);
   }
 
