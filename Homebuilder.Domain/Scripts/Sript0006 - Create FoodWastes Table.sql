@@ -1,5 +1,5 @@
 ﻿USE [homebuilder]
-GO
+GO  
 
 /****** Object:  Table [dbo].[FoodWastes]    Script Date: 5/5/2021 3:55:09 PM ******/
 SET ANSI_NULLS ON

@@ -14,7 +14,7 @@ GO
 
 /****** Object:  Table [dbo].[ToDoTask]    Script Date: 11/26/2020 6:35:00 PM ******/
 SET ANSI_NULLS ON
-GO
+GO  
 
 SET QUOTED_IDENTIFIER ON
 GO

@@ -34,7 +34,7 @@ namespace Homebuilder.Infrastructure.Repositories.Guids
         }
 
         public async Task<IEnumerable<T>> GetAll()
-        {
+        { 
             return await Connection.GetAllAsync<T>();
         }
 

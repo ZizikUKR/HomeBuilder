@@ -3,7 +3,7 @@ GO
 
 /****** Object:  Table [dbo].[UtilityBills]    Script Date: 5/4/2021 11:41:59 AM ******/
 SET ANSI_NULLS ON
-GO
+GO  
 
 SET QUOTED_IDENTIFIER ON
 GO

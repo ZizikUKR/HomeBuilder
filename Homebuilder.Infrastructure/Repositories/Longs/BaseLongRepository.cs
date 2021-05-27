@@ -43,7 +43,7 @@ namespace Homebuilder.Infrastructure.Repositories.Longs
         public virtual async Task Update(T entity)
         {
             await Connection.UpdateAsync(entity);
-            //var columns = GetColumns();
+            //var columns = GetColumns();  
             //var stringOfColumns = string.Join(", ", columns.Select(e => $"{e} = @{e}"));
             //var query = $"update {_tableName} set {stringOfColumns} where Id = @Id";
 

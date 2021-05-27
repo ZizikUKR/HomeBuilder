@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
-GO
+GO  
 
 CREATE TABLE [dbo].[Activities](
 	[id] [bigint] IDENTITY(1,1) NOT NULL,

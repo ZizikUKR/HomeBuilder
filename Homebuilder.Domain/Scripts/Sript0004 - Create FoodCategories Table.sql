@@ -3,7 +3,7 @@ GO
 
 /****** Object:  Table [dbo].[FoodCategories]    Script Date: 5/5/2021 3:45:30 PM ******/
 SET ANSI_NULLS ON
-GO
+GO  
 
 SET QUOTED_IDENTIFIER ON
 GO
