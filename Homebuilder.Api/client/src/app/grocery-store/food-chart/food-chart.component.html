@@ -1,18 +1,23 @@
 <section class="food-chart">
   <div style="display: block;">
+    <h4>Year Spends</h4>
     <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
       [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
     </canvas>
   </div>
-  <div style="display: block;">
-    <canvas baseChart 
-      [data]="pieChartData" 
-      [labels]="pieChartLabels" 
-      [chartType]="pieChartType"
-      [options]="pieChartOptions"
-      [plugins]="pieChartPlugins"
-      [legend]="pieChartLegend">
+  <div *ngIf="pieChartData.length>0" style="display: block;">
+    <div>
+      <h4>{{currentMonth}} Spends</h4>
+      <div>
+        <label>Select a month
+          <select class="form-control" placeholder="month" [(ngModel)]="currentMonth" (change)="onMonthChange($event)">
+            <option *ngFor="let month of months">{{month}}</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+      [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
     </canvas>
   </div>
-
 </section>

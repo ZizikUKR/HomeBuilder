@@ -11,7 +11,7 @@ namespace Homebuilder.Domain.Views.Guids.UtilityBills
 
     public class UtilityBillGetAllViewItem
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public DateTime CreationDate { get; set; }
         public int Year { get; set; }
         public decimal Price { get; set; }

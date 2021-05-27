@@ -41,11 +41,11 @@ export class FoodProductsComponent implements OnInit {
         if (price <= 50) {
             return HomeBuilderConstants.chipColorGreen;
         }
-        if (price <= 150) {
-            return HomeBuilderConstants.chipColorRed;
-        }
-        if (price >= 151) {
+        if (price <= 100) {
             return HomeBuilderConstants.chipColorYellow;
+        }
+        if (price >= 101) {
+            return HomeBuilderConstants.chipColorRed;
         }
     }
 

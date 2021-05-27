@@ -10,7 +10,7 @@ export class DeleteModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DeleteModalComponent>,
-    @Inject(MAT_DIALOG_DATA) private modalData: any
+    @Inject(MAT_DIALOG_DATA) public modalData: any
   ) { }
   ngOnInit() { }
 

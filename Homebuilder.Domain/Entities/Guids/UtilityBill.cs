@@ -4,7 +4,7 @@ using Homebuilder.Domain.Entities.Guids.Enums;
 namespace Homebuilder.Domain.Entities.Guids
 {
     [Table("UtilityBills")]
-    public class UtilityBill : BaseGuidEntity
+    public class UtilityBill : BaseStringEntity
     {
         public int Year { get; set; }
         public decimal Price { get; set; }

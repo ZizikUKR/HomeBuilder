@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Homebuilder.Domain.Entities.Guids.Enums;
 
 namespace Homebuilder.Api.Controllers
 {
@@ -16,9 +17,11 @@ namespace Homebuilder.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetFoodChartData()
+        public async Task<ActionResult> GetFoodChartData(MonthEnum month)
         {
-            return Ok(await _mediator.Send(new GetMonthFoodChartData.Query()));
+            var model = new GetMonthFoodChartData.Query();
+            model.Month = month;
+            return Ok(await _mediator.Send(model));
         }
     }
 }

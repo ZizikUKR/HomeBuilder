@@ -13,7 +13,7 @@ namespace Homebuilder.Domain.Queries.Guids.Foods
     {
         public class Query : IRequest<GetMonthFoodChartDataView>
         {
-
+            public MonthEnum Month { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, GetMonthFoodChartDataView>
@@ -27,11 +27,11 @@ namespace Homebuilder.Domain.Queries.Guids.Foods
             public async Task<GetMonthFoodChartDataView> Handle(Query request, CancellationToken cancellationToken)
             {
                 var res = new GetMonthFoodChartDataView();
-                int month = DateTime.UtcNow.Month;
+                //int month = DateTime.UtcNow.Month;
                 int year = DateTime.UtcNow.Year;
 
                 var monthPrices = await _repository.GetMonthPrices(year);
-                var currentMonthSpends = await _repository.GetCurrentMonthSpends(year, month);
+                var currentMonthSpends = await _repository.GetCurrentMonthSpends(year, (int)request.Month);
 
                 res.MonthPrices = monthPrices?.Select(p => p.MonthPrice).ToList();
                 res.Months = monthPrices?.Select(p => p.Month.ToString()).ToList();

@@ -13,7 +13,7 @@ namespace Homebuilder.Domain.Commands.Guids.UtilityBills
     {
         public class Command : IRequest
         {
-            public Guid Id { get; set; }
+            public string Id { get; set; }
             public int Year { get; set; }
             public decimal Price { get; set; }
             public int Month { get; set; }
