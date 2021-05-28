@@ -18,9 +18,15 @@ namespace Homebuilder.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAll()
+        public async Task<ActionResult> GetAll(int page, int pageSize, string category, int month)
         {
-            return Ok(await _mediator.Send(new GetAllFoodProducts.Query()));
+            var request = new GetAllFoodProducts.Query();
+            request.Page = page;
+            request.PageSize = pageSize;
+            request.Category = category;
+            request.Month = month;
+
+            return Ok(await _mediator.Send(request));
         }
 
         [HttpPut]

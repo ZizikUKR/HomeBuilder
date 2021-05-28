@@ -15,7 +15,7 @@ import { CreateFoodProductPopupComponent } from "./create-food-product-popup/cre
     styleUrls: ['food-products.component.scss']
 })
 
-export class FoodProductsComponent implements OnInit {     
+export class FoodProductsComponent implements OnInit {
     public foodProducts: FoodProductGetAllViewItem[] = [];
     public subscription: Subscription;
     public months: string[];
@@ -32,7 +32,7 @@ export class FoodProductsComponent implements OnInit {
     }
 
     private getFoodProducts(): void {
-        this.subscription = this.foodProductService.GetAll().subscribe(res => {
+        this.subscription = this.foodProductService.GetAll(1, 20, null, null).subscribe(res => {
             this.foodProducts = res.items;
             this.subscription.unsubscribe();
         })
