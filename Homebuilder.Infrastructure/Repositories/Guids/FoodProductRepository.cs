@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
 using Homebuilder.Domain.Entities.Guids.Foods;
 using Homebuilder.Domain.Repositories.Guids.Foods;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Homebuilder.Infrastructure.Repositories.Guids
 {
@@ -19,13 +18,14 @@ namespace Homebuilder.Infrastructure.Repositories.Guids
         {
             string sql = $@"SELECT * FROM {_tableName} AS FP
                             INNER JOIN FoodCategories AS FC ON FP.CategoryId =FC.Id
-                            ORDER BY CreationDate DESC";
+                            ORDER BY CreationDate DESC
+                            LIMIT @PageSize OFFSET @SkippedItems";
 
             var res = await Connection.QueryAsync<FoodProduct, FoodCategory, FoodProduct>(sql, map: (p, c) =>
             {
                 p.Category = c;
                 return p;
-            });
+            }, new { SkippedItems = skippedItems, PageSize = pageSize });
 
             return res;
         }

@@ -24,15 +24,6 @@ export class FoodProductService {
         if (month) {
             params.set('month', month.toString());
         }
-
-        // const params = new HttpParams({
-        //     fromObject: {
-        //         page: page.toString(),
-        //         pageSize: pageSize.toString(),
-        //         category: category,
-        //         month: month.toString(),
-        //     }
-        // });
         return this.http.get<GetAllFoodProductsView>(this.rootUrl + 'foodProduct/getAll', { params: params });
     }
 

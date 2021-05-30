@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog, MatDialogConfig } from "@angular/material";
+import { MatDialog, MatDialogConfig, PageEvent } from "@angular/material";
 import { ToastrService } from "ngx-toastr";
 import { Subscription } from "rxjs/internal/Subscription";
 import { DeleteModalComponent } from "src/app/shared/modals/delete-modal.component";
@@ -20,6 +20,10 @@ export class FoodProductsComponent implements OnInit {
     public subscription: Subscription;
     public months: string[];
 
+    public length = 0;
+    public pageSize: number = 10;
+    public page: number = 10;
+
 
     constructor(private foodProductService: FoodProductService,
         public matDialog: MatDialog,
@@ -27,13 +31,14 @@ export class FoodProductsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getFoodProducts();
+        this.getFoodProducts(1, this.pageSize);
         this.months = Object.keys(MonthEnum).filter(f => isNaN(Number(f)));
     }
 
-    private getFoodProducts(): void {
-        this.subscription = this.foodProductService.GetAll(1, 20, null, null).subscribe(res => {
+    private getFoodProducts(page: number, pageSize: number): void {
+        this.subscription = this.foodProductService.GetAll(page, pageSize, null, null).subscribe(res => {
             this.foodProducts = res.items;
+            this.length = res.count;
             this.subscription.unsubscribe();
         })
     }
@@ -49,6 +54,11 @@ export class FoodProductsComponent implements OnInit {
         }
     }
 
+    public onPaginateFood(pageEvent: PageEvent): void {
+        this.page = pageEvent.pageIndex + 1;
+        this.getFoodProducts(this.page, this.pageSize);
+    }
+
     public openCreateItemModal(): void {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
@@ -58,7 +68,7 @@ export class FoodProductsComponent implements OnInit {
 
         const matDialog = this.matDialog.open(CreateFoodProductPopupComponent, dialogConfig);
         matDialog.afterClosed().subscribe(res => {
-            this.getFoodProducts();
+            this.getFoodProducts(this.page, this.pageSize);
         });
     }
 
@@ -82,7 +92,7 @@ export class FoodProductsComponent implements OnInit {
             if (res) {
                 this.foodProductService.Delete(item.id).subscribe(() => {
                     this.notificationService.info('Food product was deleted');
-                    this.getFoodProducts();
+                    this.getFoodProducts(this.page, this.pageSize);
                 }, error => {
                     this.notificationService.error(`Food product with category ${item.category.name} wasn't deleted!`);
                 });
