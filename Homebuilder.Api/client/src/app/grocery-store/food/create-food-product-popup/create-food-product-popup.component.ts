@@ -68,7 +68,7 @@ export class CreateFoodProductPopupComponent implements OnInit {
       month: new FormControl(currentDate.getMonth() + 1, Validators.required),
       year: new FormControl(currentDate.getFullYear(), Validators.required),
       price: new FormControl('', Validators.required),
-      orderDay: new FormControl('', Validators.required),
+      orderDay: new FormControl(currentDate, Validators.required),
       category: this.myControl
     });
   }
