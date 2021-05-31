@@ -15,11 +15,11 @@ export class FoodProductService {
     constructor(private http: HttpClient) { }
 
     public GetAll(page: number, pageSize: number, category: string, month: number): Observable<GetAllFoodProductsView> {
-        const params = new HttpParams()
+        let params = new HttpParams()
             .set('page', page.toString())
             .set('pageSize', pageSize.toString());
         if (category) {
-            params.set('category', category);
+            params = params.set('category', category);
         }
         if (month) {
             params.set('month', month.toString());

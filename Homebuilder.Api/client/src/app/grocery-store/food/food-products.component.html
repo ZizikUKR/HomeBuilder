@@ -5,7 +5,13 @@
       <button class="button button-add" type="button" (click)="openCreateItemModal()">Add&nbsp;Items</button>
       <div class="header-section">
         <label class="search">
-          <input class="search-input" type="search" placeholder="Search">
+          <input type="text" class="search-input" placeholder="Pick one" aria-label="Category" matInput
+            [formControl]="myControl" [matAutocomplete]="auto" (ngModelChange)="onChangeCategory($event)">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
         </label>
         <button class="button" type="button">
           <mat-icon aria-hidden="false">keyboard_arrow_down</mat-icon>

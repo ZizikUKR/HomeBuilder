@@ -16,16 +16,28 @@ namespace Homebuilder.Infrastructure.Repositories.Guids
 
         public async Task<IEnumerable<FoodProduct>> GetAllPagedWithFilters(int skippedItems, int pageSize, string category, int year, int month)
         {
-            string sql = $@"SELECT * FROM {_tableName} AS FP
+            var sql = new StringBuilder($@"SELECT * FROM {_tableName} AS FP
                             INNER JOIN FoodCategories AS FC ON FP.CategoryId =FC.Id
-                            ORDER BY CreationDate DESC
-                            LIMIT @PageSize OFFSET @SkippedItems";
+                            WHERE Year=@Year");
 
-            var res = await Connection.QueryAsync<FoodProduct, FoodCategory, FoodProduct>(sql, map: (p, c) =>
+            if (!string.IsNullOrWhiteSpace(category))
+            {
+                sql.Append(" AND FC.Name LIKE @Category");
+            }
+
+            if (month > 0)
+            {
+                sql.Append(" AND Month=@Month");
+            }
+
+            sql.Append($@" ORDER BY CreationDate DESC
+                           LIMIT @PageSize OFFSET @SkippedItems");
+
+            var res = await Connection.QueryAsync<FoodProduct, FoodCategory, FoodProduct>(sql.ToString(), map: (p, c) =>
             {
                 p.Category = c;
                 return p;
-            }, new { SkippedItems = skippedItems, PageSize = pageSize });
+            }, new { Year = year, Category = "%" + category + "%", Month = month, SkippedItems = skippedItems, PageSize = pageSize });
 
             return res;
         }
