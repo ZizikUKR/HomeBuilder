@@ -1,4 +1,4 @@
-import { StateEnum } from './enums/state-enum';
+import { StateEnum } from '../enums/state-enum';
 
 /* tslint:disable */
 export interface ToDoTaskGetAllViewItem {

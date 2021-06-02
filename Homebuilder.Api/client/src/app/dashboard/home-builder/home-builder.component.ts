@@ -1,10 +1,10 @@
-import { UpdateToDoView } from './../../shared/models/update-to-do-view';
+import { UpdateToDoView } from '../../shared/models/to-do/update-to-do-view';
 import { StateEnum } from './../../shared/models/enums/state-enum';
 import { Component, OnInit } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { ToDoService } from 'src/app/shared/services/to-do.service';
-import { ToDoTaskGetAllViewItem } from 'src/app/shared/models/to-do-task-get-all-view-item';
-import { HomeBuilderConstants } from 'src/app/shared/models/home-builder.constants';
+import { ToDoTaskGetAllViewItem } from 'src/app/shared/models/to-do/to-do-task-get-all-view-item';
+import { HomeBuilderConstants } from 'src/app/shared/models/constants/home-builder.constants';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DeleteModalComponent } from 'src/app/shared/modals/delete-modal.component';
 import { ToastrService } from 'ngx-toastr';

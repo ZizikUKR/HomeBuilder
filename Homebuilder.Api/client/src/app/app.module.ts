@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { GroceryStoreModule } from './grocery-store/grocery-store.module';
-import { NetworkModule } from './network/network.module';
+import { UtilityBillModule } from './utility-bill/utility-bill.module';
 import { ToolShelfModule } from './tool-shelf/tool-shelf.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +38,7 @@ const routes: Routes = [
     BrowserModule,
     DashboardModule,
     GroceryStoreModule,
-    NetworkModule,
+    UtilityBillModule,
     ToolShelfModule,
     HttpClientModule,
     RouterModule.forRoot(routes),

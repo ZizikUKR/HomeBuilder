@@ -8,7 +8,7 @@ import { map, startWith } from "rxjs/operators";
 import { DeleteModalComponent } from "src/app/shared/modals/delete-modal.component";
 import { MonthEnum } from "src/app/shared/models/enums/month-enum";
 import { FoodProductGetAllViewItem } from "src/app/shared/models/food-products/food-product-get-all-view-item";
-import { HomeBuilderConstants } from "src/app/shared/models/home-builder.constants";
+import { HomeBuilderConstants } from "src/app/shared/models/constants/home-builder.constants";
 import { FoodCategoryService } from "src/app/shared/services/food-category.service";
 import { FoodProductService } from "src/app/shared/services/food-product.service";
 import { CreateFoodProductPopupComponent } from "./create-food-product-popup/create-food-product-popup.component";
