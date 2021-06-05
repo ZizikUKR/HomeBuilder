@@ -2,9 +2,9 @@
   <h2 class="title">Bills</h2>
   <div class="board">
     <header class="header">
-      <!-- <button class="button button-add" type="button" (click)="openCreateItemModal()">Add&nbsp;Bill</button> -->
-      <!-- <div class="header-section">
-        <label class="search">
+      <button class="button button-add" type="button" (click)="openCreateItemModal()">Add&nbsp;Bill</button>
+      <div class="header-section">
+        <!-- <label class="search">
           <input type="text" class="search-input" placeholder="Pick one" aria-label="Category" matInput
             [formControl]="myControl" [matAutocomplete]="auto" (ngModelChange)="onChangeCategory($event)">
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -12,21 +12,21 @@
               {{option}}
             </mat-option>
           </mat-autocomplete>
-        </label>
+        </label> -->
         <button class="button" type="button">
           <mat-icon aria-hidden="false">keyboard_arrow_down</mat-icon>
         </button>
-      </div> -->
+      </div>
     </header>
-    <!-- <ul class="list" *ngIf="foodProducts.length > 0">
-      <li class="item" *ngFor="let item of foodProducts">
+    <ul class="list" *ngIf="utilityBills.length > 0">
+      <li class="item" *ngFor="let item of utilityBills">
         <div class="item-section">
           <button class="button" (click)="openDeleteModal(item)" [ngClass]="{active: true}" type="button">
             <mat-icon aria-hidden="false">delete</mat-icon>
           </button>
         </div>
         <div class="item-section section-info">
-          <p class="item-title">{{item?.category.name}}</p>
+          <p class="item-title">{{utilityBillNames.get(item?.name)}}</p>
           <p class="item-description">{{months[item?.month]}}</p>
         </div>
         <div class="item-section">
@@ -41,7 +41,7 @@
         </div>
 
       </li>
-    </ul> -->
+    </ul>
   </div>
   <!-- <mat-paginator [length]="length" [pageSize]="pageSize" (page)="onPaginateFood($event)">
   </mat-paginator> -->

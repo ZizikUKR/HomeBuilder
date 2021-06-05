@@ -121,7 +121,7 @@ export class FoodProductsComponent implements OnInit {
 
         dialogConfig.data = {
             name: 'deleteProduct',
-            title: 'Are you sure you want to delete this todo?',
+            title: 'Are you sure you want to delete this Food Product?',
             description: 'If you continue, the food product with category ' + item.category.name + 'will be deleted.',
             actionButtonText: 'Delete',
             TodoId: item.id

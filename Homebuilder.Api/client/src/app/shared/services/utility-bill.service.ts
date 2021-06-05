@@ -6,7 +6,7 @@ import { CreateUtilityBillView } from "../models/utility-bills/create-utility-bi
 import { GetAllUtilityBillsView } from "../models/utility-bills/get-all-utility-bills-view";
 import { UpdateUtilityBillView } from "../models/utility-bills/update-utility-bill-view";
 
-Injectable({
+@Injectable({
     providedIn: 'root'
 })
 export class UtilityBillService {
@@ -16,7 +16,7 @@ export class UtilityBillService {
 
     public getAll(): Observable<GetAllUtilityBillsView> {
         return this.http.get<GetAllUtilityBillsView>(this.rootUrl + 'utilityBill/getAll');
-      }
+    }
 
     public delete(id: string): Observable<boolean> {
         const params = new HttpParams()

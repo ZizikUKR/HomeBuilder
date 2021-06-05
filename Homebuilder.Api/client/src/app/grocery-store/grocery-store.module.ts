@@ -11,8 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatButtonModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatPaginatorModule } from '@angular/material';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CreateFoodProductPopupComponent } from './food/create-food-product-popup/create-food-product-popup.component';
-import { NgSelect2Module } from 'ng-select2';
-import { Select2Module } from 'ng-select2-component';
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({

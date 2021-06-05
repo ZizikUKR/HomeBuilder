@@ -1,0 +1,42 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+      <h1 id="modal-title">Create Utility Bill</h1>
+  </header>
+  <form [formGroup]="utilityBillForm">
+      <section id="modal-body">
+
+          <div class="form-group">
+              <label>Price
+                  <input class="form-control" type="number" min="0" placeholder="price" formControlName="price">
+              </label>
+          </div>
+          <div class="form-group">
+              <label>Year
+                  <input class="form-control" type="number" min="0" placeholder="year" formControlName="year">
+              </label>
+          </div>
+          <div class="form-group">
+              <label>Month
+                  <select class="form-control" placeholder="month" formControlName="month">
+                      <option *ngFor="let month of monthNumbers" [ngValue]="month">{{months[month]}}</option>
+                  </select>
+              </label>
+          </div>
+          <div class="form-group">
+            <label>Month
+                <select class="form-control" placeholder="month" formControlName="name">
+                    <option *ngFor="let bill of utilityBillNames | keyvalue" [ngValue]="bill.key">{{bill.value}}</option>
+                </select>
+            </label>
+        </div>        
+      </section>
+      <footer id="modal-footer">
+          <button mat-raised-button [disabled]="!utilityBillForm.valid" id="modal-action-button" (click)="onCreate()">
+              Create
+          </button>
+          <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">
+              Cancel
+          </button>
+      </footer>
+  </form>
+</div>
