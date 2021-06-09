@@ -8,6 +8,6 @@ namespace Homebuilder.Domain.Repositories.Guids
     public interface IUtilityBillRepository : IBaseGuidRepository<UtilityBill>
     {
         Task<IEnumerable<GetMonthPrice>> GetMonthPrices(int year);
-        Task<IEnumerable<GetCurrentMonthSpendDto>> GetCurrentMonthSpends(int year, int month);
+        Task<IEnumerable<GetCurrentUtilityBillMonthSpendDto>> GetCurrentMonthSpends(int year, int month);
     }
 }

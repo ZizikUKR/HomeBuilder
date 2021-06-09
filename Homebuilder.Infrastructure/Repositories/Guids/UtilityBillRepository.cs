@@ -24,13 +24,13 @@ namespace Homebuilder.Infrastructure.Repositories.Guids
             return res;
         }
 
-        public async Task<IEnumerable<GetCurrentMonthSpendDto>> GetCurrentMonthSpends(int year, int month)
+        public async Task<IEnumerable<GetCurrentUtilityBillMonthSpendDto>> GetCurrentMonthSpends(int year, int month)
         {
-            string sql = $@"SELECT SUM(Price) AS Price, FC.Name FROM {_tableName}
+            string sql = $@"SELECT SUM(Price) AS Price, Name FROM {_tableName}
                             WHERE Year=@Year AND Month=@Month
                             GROUP BY Name ORDER BY Name";
 
-            var res = await Connection.QueryAsync<GetCurrentMonthSpendDto>(sql, new { Year = year, Month = month });
+            var res = await Connection.QueryAsync<GetCurrentUtilityBillMonthSpendDto>(sql, new { Year = year, Month = month });
 
             return res;
         }

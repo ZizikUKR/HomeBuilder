@@ -36,7 +36,7 @@ namespace Homebuilder.Domain.Queries.Guids.Foods
                 res.MonthPrices = monthPrices?.Select(p => p.MonthPrice).ToList();
                 res.Months = monthPrices?.Select(p => p.Month.ToString()).ToList();
 
-                res.CurrentMontCategoryPrices = currentMonthSpends.Select(p => p.Price).ToList();
+                res.CurrentMonthCategoryPrices = currentMonthSpends.Select(p => p.Price).ToList();
                 res.CurrentMonthCategories = currentMonthSpends.Select(p => p.Name).ToList();
 
                 return res;

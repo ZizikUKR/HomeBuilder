@@ -4,6 +4,7 @@ import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataS
 import { Subscription } from 'rxjs';
 import { MonthEnum } from 'src/app/shared/models/enums/month-enum';
 import { FoodChartService } from 'src/app/shared/services/food-chart.service';
+import { UtilityBillService } from 'src/app/shared/services/utility-bill.service';
 
 @Component({
   selector: 'app-utility-bill-chart',
@@ -39,7 +40,7 @@ export class UtilityBillChartComponent implements OnInit {
 
   public subscription: Subscription;
 
-  constructor(private foodChartService: FoodChartService) {
+  constructor(private chartService: UtilityBillService) {
 
   }
   ngOnInit(): void {
@@ -55,11 +56,11 @@ export class UtilityBillChartComponent implements OnInit {
   }
 
   private getFoodMonthChartData(month: string): void {
-    this.subscription = this.foodChartService.getMonthFoodChartData(month).subscribe(res => {
+    this.subscription = this.chartService.getMonthFoodChartData(month).subscribe(res => {
       this.barChartLabels = res.months;
       this.barChartData = [{ data: res.monthPrices, label: 'Utility Bills' }];
       this.pieChartLabels = res.currentMonthCategories;
-      this.pieChartData = res.currentMontCategoryPrices;
+      this.pieChartData = res.currentMonthCategoryPrices;
       monkeyPatchChartJsTooltip();
       monkeyPatchChartJsLegend();
       this.subscription.unsubscribe();

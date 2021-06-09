@@ -60,7 +60,7 @@ export class FoodChartComponent implements OnInit {
       this.barChartLabels = res.months;
       this.barChartData = [{ data: res.monthPrices, label: 'Food Spends' }];
       this.pieChartLabels = res.currentMonthCategories;
-      this.pieChartData = res.currentMontCategoryPrices;
+      this.pieChartData = res.currentMonthCategoryPrices;
       monkeyPatchChartJsTooltip();
       monkeyPatchChartJsLegend();
       this.subscription.unsubscribe();

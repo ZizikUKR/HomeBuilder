@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Homebuilder.Domain.Entities.Guids.Enums;
+﻿using Homebuilder.Domain.Entities.Guids.Enums;
 using Homebuilder.Domain.Repositories.Guids;
-using Homebuilder.Domain.Repositories.Guids.Foods;
-using Homebuilder.Domain.Views.Guids.Foods;
 using Homebuilder.Domain.Views.Guids.UtilityBills;
 using MediatR;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Homebuilder.Domain.Queries.Guids.UtilityBills
 {
@@ -40,7 +36,7 @@ namespace Homebuilder.Domain.Queries.Guids.UtilityBills
                 res.Months = monthPrices?.Select(p => p.Month.ToString()).ToList();
 
                 res.CurrentMonthCategoryPrices = currentMonthSpends.Select(p => p.Price).ToList();
-                res.CurrentMonthCategories = currentMonthSpends.Select(p => p.Name).ToList();
+                res.CurrentMonthCategories = currentMonthSpends.Select(p => p.Name.ToString()).ToList();
 
                 return res;
             }
