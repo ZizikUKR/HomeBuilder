@@ -21,7 +21,7 @@ export class UtilityBillChartComponent implements OnInit {
   public barChartLegend = true;
   public barChartPlugins = [];
   public barChartData: ChartDataSets[] = [
-    { data: [], label: 'Food Spends' }
+    { data: [], label: 'Utility Bills' }
   ];
 
   // Pie
@@ -57,7 +57,7 @@ export class UtilityBillChartComponent implements OnInit {
   private getFoodMonthChartData(month: string): void {
     this.subscription = this.foodChartService.getMonthFoodChartData(month).subscribe(res => {
       this.barChartLabels = res.months;
-      this.barChartData = [{ data: res.monthPrices, label: 'Food Spends' }];
+      this.barChartData = [{ data: res.monthPrices, label: 'Utility Bills' }];
       this.pieChartLabels = res.currentMonthCategories;
       this.pieChartData = res.currentMontCategoryPrices;
       monkeyPatchChartJsTooltip();
