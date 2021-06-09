@@ -4,6 +4,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Homebuilder.Domain.Entities.Guids.Enums;
+using Homebuilder.Domain.Queries.Guids.Foods;
 
 namespace Homebuilder.Api.Controllers
 {
@@ -52,6 +54,14 @@ namespace Homebuilder.Api.Controllers
             await _mediator.Send(view);
 
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetChartsData(MonthEnum month)
+        {
+            var model = new GetUtilityBillChartsData.Query();
+            model.Month = month;
+            return Ok(await _mediator.Send(model));
         }
     }
 }
