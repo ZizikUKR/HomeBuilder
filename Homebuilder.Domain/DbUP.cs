@@ -14,6 +14,7 @@ namespace Homebuilder.Domain
                 .LogToAutodetectedLog()
                 .Build();
             var result = upgrader.PerformUpgrade();
+
         }
     }
 }

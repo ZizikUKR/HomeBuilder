@@ -34,8 +34,6 @@ import { ChartsModule } from 'ng2-charts';
         MatNativeDateModule,
         MatFormFieldModule,
         MatInputModule,
-        // NgSelect2Module,
-        // Select2Module,
         MatAutocompleteModule,
         ChartsModule,
         MatPaginatorModule,

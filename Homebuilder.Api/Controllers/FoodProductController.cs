@@ -49,7 +49,7 @@ namespace Homebuilder.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] CreateUtilityBillCommand.Command view)
+        public async Task<ActionResult> Create([FromBody] CreateFoodProductCommand.Command view)
         {
             if (view is null)
             {

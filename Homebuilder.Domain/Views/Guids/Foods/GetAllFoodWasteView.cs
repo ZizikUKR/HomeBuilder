@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Homebuilder.Domain.Views.Guids.Foods
+﻿namespace Homebuilder.Domain.Views.Guids.Foods
 {
-    public class GetAllFoodWasteView
+    public class GetAllFoodWasteView: PagedResponse<FoodWasteGetAllViewItem>
     {
-        public List<FoodWasteGetAllViewItem> Items { get; set; } = new List<FoodWasteGetAllViewItem>();
     }
 
     public class FoodWasteGetAllViewItem
