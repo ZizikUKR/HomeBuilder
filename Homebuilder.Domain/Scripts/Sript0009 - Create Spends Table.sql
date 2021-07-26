@@ -1,0 +1,9 @@
+﻿CREATE TABLE spends (
+	Id Text PRIMARY KEY NOT NULL,
+	CreationDate TEXT NOT NULL,
+	Month INTEGER NOT NULL,
+	Year INTEGER NOT NULL,
+	OrderDay TEXT NOT NULL,
+	Price REAL NOT NULL,
+	CategoryId TEXT NOT NULL
+);

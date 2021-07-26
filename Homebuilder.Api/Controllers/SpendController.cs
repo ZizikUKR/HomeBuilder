@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace Homebuilder.Api.Controllers
 {
     [Route("api/[controller]/[action]")]
-    public class SpendController : ControllerBase
+    public class FoodProductController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public SpendController(IMediator mediator)
+        public FoodProductController(IMediator mediator)
         {
             _mediator = mediator;
         }
