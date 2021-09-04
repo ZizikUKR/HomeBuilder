@@ -134,6 +134,8 @@ namespace Homebuilder.Api
             services.AddTransient<IFoodWasteRepository, FoodWasteRepository>();
             services.AddTransient<IFoodProductRepository, FoodProductRepository>();
             services.AddTransient<IFoodCategoryRepository, FoodCategoryRepository>();
+            services.AddTransient<ISpendCategoryRepository, SpendCategoryRepository>();
+            services.AddTransient<ISpendRepository, SpendRepository>();
         }
 
         private void ConfigureValidators(IServiceCollection services)

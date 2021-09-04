@@ -1,13 +1,13 @@
-﻿using System;
-using Homebuilder.Domain.Entities.Guids.Foods;
+﻿using Homebuilder.Domain.Entities.Guids.Spends;
+using Homebuilder.Domain.Helpers;
 using Homebuilder.Domain.Repositories.Guids.Foods;
 using Homebuilder.Domain.Views;
 using Homebuilder.Domain.Views.Guids.Foods;
 using MediatR;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Homebuilder.Domain.Helpers;
 
 namespace Homebuilder.Domain.Queries.Guids.Spends
 {
@@ -21,9 +21,9 @@ namespace Homebuilder.Domain.Queries.Guids.Spends
 
         public class Handler : IRequestHandler<Query, GetAllSpendsView>
         {
-            private readonly IFoodProductRepository _repository;
+            private readonly ISpendRepository _repository;
 
-            public Handler(IFoodProductRepository repository)
+            public Handler(ISpendRepository repository)
             {
                 _repository = repository;
             }
@@ -44,21 +44,21 @@ namespace Homebuilder.Domain.Queries.Guids.Spends
                 return res;
             }
 
-            private SpendGetAllViewItem MapFoodProductToView(FoodProduct product)
+            private SpendGetAllViewItem MapFoodProductToView(Spend spend)
             {
                 var res = new SpendGetAllViewItem();
-                res.Id = product.Id;
-                res.CategoryId = product.CategoryId;
-                res.CreationDate = product.CreationDate;
-                res.Month = product.Month;
-                res.Year = product.Year;
-                res.Price = product.Price;
-                res.OrderDay = product.OrderDay;
+                res.Id = spend.Id;
+                res.CategoryId = spend.CategoryId;
+                res.CreationDate = spend.CreationDate;
+                res.Month = spend.Month;
+                res.Year = spend.Year;
+                res.Price = spend.Price;
+                res.OrderDay = spend.OrderDay;
                 res.Category = new SpendCategoryView
                 {
-                    CreationDate = product.Category.CreationDate,
-                    Id = product.Category.Id,
-                    Name = product.Category.Name
+                    CreationDate = spend.Category.CreationDate,
+                    Id = spend.Category.Id,
+                    Name = spend.Category.Name
                 };
 
                 return res;

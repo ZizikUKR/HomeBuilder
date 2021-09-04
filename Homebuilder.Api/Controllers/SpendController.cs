@@ -4,15 +4,17 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using Homebuilder.Domain.Commands.Guids.Spends;
+using Homebuilder.Domain.Queries.Guids.Spends;
 
 namespace Homebuilder.Api.Controllers
 {
     [Route("api/[controller]/[action]")]
-    public class FoodProductController : ControllerBase
+    public class SpendController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public FoodProductController(IMediator mediator)
+        public SpendController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -20,7 +22,7 @@ namespace Homebuilder.Api.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAll(int page, int pageSize, string category, int month)
         {
-            var request = new GetAllFoodProducts.Query();
+            var request = new GetAllSpends.Query();
             request.Page = page;
             request.PageSize = pageSize;
             request.Category = category;
@@ -30,7 +32,7 @@ namespace Homebuilder.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update([FromBody] UpdateFoodProductCommand.Command command)
+        public async Task<ActionResult> Update([FromBody] UpdateSpendCommand.Command command)
         {
             if (command == null)
             {
@@ -44,12 +46,12 @@ namespace Homebuilder.Api.Controllers
         [HttpDelete]
         public async Task<ActionResult> Delete(string id)
         {
-            await _mediator.Send(new DeleteFoodProductCommand.Command { Id = id });
+            await _mediator.Send(new DeleteSpendCommand.Command { Id = id });
             return Ok();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] CreateFoodProductCommand.Command view)
+        public async Task<ActionResult> Create([FromBody] CreateSpendCommand.Command view)
         {
             if (view is null)
             {
