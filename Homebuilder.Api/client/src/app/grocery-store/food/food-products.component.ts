@@ -12,6 +12,7 @@ import { HomeBuilderConstants } from "src/app/shared/models/constants/home-build
 import { FoodCategoryService } from "src/app/shared/services/food-category.service";
 import { FoodProductService } from "src/app/shared/services/food-product.service";
 import { CreateFoodProductPopupComponent } from "./create-food-product-popup/create-food-product-popup.component";
+import { UploadFoodProductPopupComponent } from "./upload-food-products-popup/upload-food-product-popup.component";
 
 @Component({
     selector: 'food-products',
@@ -107,6 +108,19 @@ export class FoodProductsComponent implements OnInit {
         dialogConfig.width = '600px';
 
         const matDialog = this.matDialog.open(CreateFoodProductPopupComponent, dialogConfig);
+        matDialog.afterClosed().subscribe(res => {
+            this.getFoodProducts(this.page, this.pageSize, this.myControl.value);
+        });
+    }
+
+    public openUploadItemModal(): void {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.id = 'app-create-to-do-popup';
+        dialogConfig.height = '600px';
+        dialogConfig.width = '600px';
+
+        const matDialog = this.matDialog.open(UploadFoodProductPopupComponent, dialogConfig);
         matDialog.afterClosed().subscribe(res => {
             this.getFoodProducts(this.page, this.pageSize, this.myControl.value);
         });

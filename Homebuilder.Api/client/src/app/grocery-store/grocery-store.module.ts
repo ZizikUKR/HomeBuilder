@@ -12,13 +12,15 @@ import { MatAutocompleteModule, MatButtonModule, MatDatepickerModule, MatDialogM
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CreateFoodProductPopupComponent } from './food/create-food-product-popup/create-food-product-popup.component';
 import { ChartsModule } from 'ng2-charts';
+import { UploadFoodProductPopupComponent } from './food/upload-food-products-popup/upload-food-product-popup.component';
 
 @NgModule({
     declarations: [
         GroceryStoreComponent,
         FoodChartComponent,
         FoodProductsComponent,
-        CreateFoodProductPopupComponent
+        CreateFoodProductPopupComponent,
+        UploadFoodProductPopupComponent
     ],
     imports: [
         CommonModule,
@@ -42,7 +44,8 @@ import { ChartsModule } from 'ng2-charts';
     providers: [
     ],
     entryComponents: [
-        CreateFoodProductPopupComponent
+        CreateFoodProductPopupComponent,
+        UploadFoodProductPopupComponent
     ]
 })
 export class GroceryStoreModule { }
