@@ -61,7 +61,6 @@ export class FoodProductsComponent implements OnInit {
     }
 
     private filterCategories(value: string): string[] {
-        debugger;
         if (value) {
             const filterValue = value.toLowerCase();
 
@@ -89,9 +88,6 @@ export class FoodProductsComponent implements OnInit {
     }
 
     public onChangeCategory(event: string): void {
-        debugger;
-        const s = this.filteredCategory;
-
         this.getFoodProducts(this.page, this.pageSize, event);
     }
 
