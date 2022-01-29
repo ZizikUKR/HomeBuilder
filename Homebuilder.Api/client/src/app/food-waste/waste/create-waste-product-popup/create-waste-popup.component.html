@@ -7,17 +7,17 @@
 
             <div class="form-group">
                 <label>Price
-                    <input class="form-control" type="number" min="0" placeholder="price" formControlName="price">
+                    <input class="form-control modal-number-input" type="number" min="0" placeholder="price" formControlName="price">
                 </label>
             </div>
             <div class="form-group">
                 <label>Year
-                    <input class="form-control" type="number" min="0" placeholder="year" formControlName="year">
+                    <input class="form-control modal-number-input" type="number" min="0" placeholder="year" formControlName="year">
                 </label>
             </div>
             <div class="form-group">
                 <label>Month
-                    <select class="form-control" placeholder="month" formControlName="month">
+                    <select class="form-control modal-number-input" placeholder="month" formControlName="month">
                         <option *ngFor="let month of monthNumbers" [ngValue]="month">{{months[month]}}</option>
                     </select>
                 </label>
@@ -40,15 +40,13 @@
             </div>
 
             <div class="form-group">
-                <label>Order Day
-                    <mat-form-field appearance="fill">
-                        <mat-label>Choose a date</mat-label>
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Order Day</mat-label>
                         <input matInput [matDatepicker]="picker" formControlName="orderDay"
                             (dateInput)="changeTime('input', $event)">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
-                </label>
             </div>
 
         </section>

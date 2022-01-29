@@ -100,8 +100,8 @@ export class FoodProductsComponent implements OnInit {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.id = 'app-create-to-do-popup';
-        dialogConfig.height = '600px';
-        dialogConfig.width = '600px';
+        dialogConfig.height = '550px';
+        dialogConfig.width = '350px';
 
         const matDialog = this.matDialog.open(CreateFoodProductPopupComponent, dialogConfig);
         matDialog.afterClosed().subscribe(res => {

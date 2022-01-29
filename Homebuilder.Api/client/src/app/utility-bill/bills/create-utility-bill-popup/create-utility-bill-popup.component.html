@@ -7,24 +7,24 @@
 
           <div class="form-group">
               <label>Price
-                  <input class="form-control" type="number" min="0" placeholder="price" formControlName="price">
+                  <input class="form-control modal-number-input" type="number" min="0" placeholder="price" formControlName="price">
               </label>
           </div>
           <div class="form-group">
               <label>Year
-                  <input class="form-control" type="number" min="0" placeholder="year" formControlName="year">
+                  <input class="form-control modal-number-input" type="number" min="0" placeholder="year" formControlName="year">
               </label>
           </div>
           <div class="form-group">
               <label>Month
-                  <select class="form-control" placeholder="month" formControlName="month">
+                  <select class="form-control modal-number-input" placeholder="month" formControlName="month">
                       <option *ngFor="let month of monthNumbers" [ngValue]="month">{{months[month]}}</option>
                   </select>
               </label>
           </div>
           <div class="form-group">
             <label>Categoty
-                <select class="form-control" placeholder="Categoty" formControlName="name">
+                <select class="form-control modal-number-input" placeholder="Categoty" formControlName="name">
                     <option *ngFor="let bill of utilityBillNames | keyvalue" [ngValue]="bill.key">{{bill.value}}</option>
                 </select>
             </label>

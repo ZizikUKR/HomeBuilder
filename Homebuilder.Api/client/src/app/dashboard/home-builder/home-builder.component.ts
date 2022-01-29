@@ -69,7 +69,7 @@ export class HomeBuilderComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.id = 'app-create-to-do-popup';
     dialogConfig.height = '400px';
-    dialogConfig.width = '600px';
+    dialogConfig.width = '350px';
 
     const matDialog = this.matDialog.open(CreateToDoPopupComponent, dialogConfig);
     matDialog.afterClosed().subscribe(res => {

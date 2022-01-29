@@ -49,7 +49,6 @@ export class CreateUtilityBillPopupComponent implements OnInit {
       [UtilityBillNameEnum.RentBill, 'Rent Bill'],
       [UtilityBillNameEnum.Sanitation, 'Sanitation']
     ]);
-
   }
 
   private initForm(): void {
