@@ -1,23 +1,45 @@
-<section class="food-chart">
-  <div style="display: block;">
-    <h4>{{currentYear}} Spends</h4>
-    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-      [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
-    </canvas>
-  </div>
-  <div *ngIf="pieChartData.length>0" style="display: block;">
-    <div>
-      <h4>{{currentMonth}} Spends</h4>
-      <div>
-        <label>Select a month
-          <select class="form-control" placeholder="month" [(ngModel)]="currentMonth" (change)="onMonthChange($event)">
-            <option *ngFor="let month of months">{{month}}</option>
-          </select>
-        </label>
-      </div>
+<section class="utility-chart">
+  <h2 class="title">{{ currentYear }} Spends</h2>
+  <div class="board">
+    <div style="display: block">
+      <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+      >
+      </canvas>
     </div>
-    <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-      [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
-    </canvas>
+    <div *ngIf="pieChartData.length > 0" style="display: block">
+      <div>
+        <h4>{{ currentMonth }} Spends</h4>
+        <div>
+          <label class="round-chart-button"
+            >Month
+            <select
+              class="form-control modal-number-input"
+              placeholder="month"
+              [(ngModel)]="currentMonth"
+              (change)="onMonthChange($event)"
+            >
+              <option *ngFor="let month of months">{{ month }}</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <canvas
+        baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend"
+      >
+      </canvas>
+    </div>
   </div>
 </section>
