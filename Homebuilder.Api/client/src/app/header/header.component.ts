@@ -17,10 +17,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleViewMenu() {
+  public toggleViewMenu() {
     this.toggleView = !this.toggleView;
   }
-  onClick(event) {
+  public onClick(event) {
     if (!this._eref.nativeElement.contains(event.target)) {
       this.toggleView = false;
     }

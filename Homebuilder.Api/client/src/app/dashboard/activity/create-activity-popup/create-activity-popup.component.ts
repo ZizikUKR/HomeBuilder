@@ -23,9 +23,9 @@ export class CreateActivityPopupComponent implements OnInit {
 
   private initForm(): void {
     this.toDoForm = new FormGroup({
-      toDo: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      information: new FormControl('', Validators.required)
+      code: new FormControl('', Validators.required)
     });
   }
 
