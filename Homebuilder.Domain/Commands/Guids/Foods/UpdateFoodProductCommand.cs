@@ -48,11 +48,11 @@ namespace Homebuilder.Domain.Commands.Guids.Foods
                     await _categoryRepository.Add(category);
                 }
 
-                MapUtilityBillViewToModel(foodProduct, request, category.Id);
+                MapWasteProductViewToModel(foodProduct, request, category.Id);
                 await _repository.Update(foodProduct);
             }
 
-            private void MapUtilityBillViewToModel(FoodProduct bill, Command request, string categoryId)
+            private void MapWasteProductViewToModel(FoodProduct bill, Command request, string categoryId)
             {
                 bill.Price = request.Price;
                 bill.Month = request.Month;

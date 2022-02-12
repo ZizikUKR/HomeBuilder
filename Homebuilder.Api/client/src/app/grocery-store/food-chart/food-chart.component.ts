@@ -16,6 +16,7 @@ export class FoodChartComponent implements OnInit {
   public months: string[];
   public currentMonth: string;
   public currentYear: string;
+  public currentDate: Date;
 
   public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
@@ -45,9 +46,9 @@ export class FoodChartComponent implements OnInit {
   }
   ngOnInit(): void {
     this.initializeFilters();
-    const currentDate = new Date();
-    this.currentMonth = this.months[currentDate.getMonth() + 1];
-    this.currentYear = currentDate.getFullYear().toString();
+    this.currentDate = new Date();
+    this.currentMonth = this.months[this.currentDate.getMonth() + 1];
+    this.currentYear = this.currentDate.getFullYear().toString();
     this.getFoodMonthChartData(this.currentMonth);
   }
 
@@ -60,7 +61,7 @@ export class FoodChartComponent implements OnInit {
       this.barChartLabels = res.months;
       this.barChartData = [{ data: res.monthPrices, label: 'Food Spends' }];
       this.pieChartLabels = res.currentMonthCategories;
-      this.pieChartData = res.currentMontCategoryPrices;
+      this.pieChartData = res.currentMonthCategoryPrices;
       monkeyPatchChartJsTooltip();
       monkeyPatchChartJsLegend();
       this.subscription.unsubscribe();
@@ -68,8 +69,14 @@ export class FoodChartComponent implements OnInit {
   }
 
   public onMonthChange(event: any): void {
-    this.pieChartData = [];
-    this.getFoodMonthChartData(this.currentMonth);
+    const choosedMonth = MonthEnum[this.currentMonth];
+    const currentMonthNum = this.currentDate.getMonth() + 1;
+    if (choosedMonth > 0 && choosedMonth <= currentMonthNum) {
+      this.pieChartData = [];
+      this.getFoodMonthChartData(this.currentMonth);
+    } else {
+      this.currentMonth = this.months[currentMonthNum];
+    }
   }
 
   public barChartOptions: ChartOptions = {

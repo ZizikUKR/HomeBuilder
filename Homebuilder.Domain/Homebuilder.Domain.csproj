@@ -11,6 +11,9 @@
     <None Remove="Scripts\Sript0004 - Create FoodCategories Table.sql" />
     <None Remove="Scripts\Sript0005 - Create FoodProducts Table.sql" />
     <None Remove="Scripts\Sript0006 - Create FoodWastes Table.sql" />
+    <None Remove="Scripts\Sript0007 - Rename Cherry to Tommato categoty.sql" />
+    <None Remove="Scripts\Sript0008 - Create SpendCategories Table.sql" />
+    <None Remove="Scripts\Sript0009 - Create Spends Table.sql" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +26,12 @@
     <EmbeddedResource Include="Scripts\Sript0003 - Create UtilityBills Table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\Sript0009 - Create Spends Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\Sript0008 - Create SpendCategories Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Scripts\Sript0004 - Create FoodCategories Table.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -30,6 +39,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Scripts\Sript0006 - Create FoodWastes Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scripts\Sript0007 - Rename Cherry to Tommato categoty.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

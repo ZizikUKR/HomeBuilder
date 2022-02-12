@@ -8,19 +8,19 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule, MatButtonModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
+import { MatAutocompleteModule, MatButtonModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatNativeDateModule, MatPaginatorModule } from '@angular/material';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CreateFoodProductPopupComponent } from './food/create-food-product-popup/create-food-product-popup.component';
-import { NgSelect2Module } from 'ng-select2';
-import { Select2Module } from 'ng-select2-component';
 import { ChartsModule } from 'ng2-charts';
+import { UploadFoodProductPopupComponent } from './food/upload-food-products-popup/upload-food-product-popup.component';
 
 @NgModule({
     declarations: [
         GroceryStoreComponent,
         FoodChartComponent,
         FoodProductsComponent,
-        CreateFoodProductPopupComponent
+        CreateFoodProductPopupComponent,
+        UploadFoodProductPopupComponent
     ],
     imports: [
         CommonModule,
@@ -36,16 +36,16 @@ import { ChartsModule } from 'ng2-charts';
         MatNativeDateModule,
         MatFormFieldModule,
         MatInputModule,
-        // NgSelect2Module,
-        // Select2Module,
         MatAutocompleteModule,
         ChartsModule,
+        MatPaginatorModule,
         ModalModule.forRoot()
     ],
     providers: [
     ],
     entryComponents: [
-        CreateFoodProductPopupComponent
+        CreateFoodProductPopupComponent,
+        UploadFoodProductPopupComponent
     ]
 })
 export class GroceryStoreModule { }

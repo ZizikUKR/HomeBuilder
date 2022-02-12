@@ -7,12 +7,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { GroceryStoreModule } from './grocery-store/grocery-store.module';
-import { NetworkModule } from './network/network.module';
-import { ToolShelfModule } from './tool-shelf/tool-shelf.module';
+import { UtilityBillModule } from './utility-bill/utility-bill.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteModalComponent } from './shared/modals/delete-modal.component';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
+import { FoodWasteModule } from './food-waste/food-waste.module';
 
 
 const routes: Routes = [
@@ -38,8 +38,8 @@ const routes: Routes = [
     BrowserModule,
     DashboardModule,
     GroceryStoreModule,
-    NetworkModule,
-    ToolShelfModule,
+    UtilityBillModule,
+    FoodWasteModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
@@ -50,7 +50,7 @@ const routes: Routes = [
     DeleteModalComponent
   ],
   providers: [
-   // { provide: ToastrService}
+    // { provide: ToastrService}
   ],
   bootstrap: [AppComponent]
 })

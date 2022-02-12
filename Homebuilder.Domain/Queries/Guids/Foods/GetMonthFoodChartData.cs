@@ -27,7 +27,6 @@ namespace Homebuilder.Domain.Queries.Guids.Foods
             public async Task<GetMonthFoodChartDataView> Handle(Query request, CancellationToken cancellationToken)
             {
                 var res = new GetMonthFoodChartDataView();
-                //int month = DateTime.UtcNow.Month;
                 int year = DateTime.UtcNow.Year;
 
                 var monthPrices = await _repository.GetMonthPrices(year);
@@ -36,7 +35,7 @@ namespace Homebuilder.Domain.Queries.Guids.Foods
                 res.MonthPrices = monthPrices?.Select(p => p.MonthPrice).ToList();
                 res.Months = monthPrices?.Select(p => p.Month.ToString()).ToList();
 
-                res.CurrentMontCategoryPrices = currentMonthSpends.Select(p => p.Price).ToList();
+                res.CurrentMonthCategoryPrices = currentMonthSpends.Select(p => p.Price).ToList();
                 res.CurrentMonthCategories = currentMonthSpends.Select(p => p.Name).ToList();
 
                 return res;

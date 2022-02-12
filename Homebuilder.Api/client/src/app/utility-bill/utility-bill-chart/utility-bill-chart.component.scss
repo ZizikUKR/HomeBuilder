@@ -1,0 +1,64 @@
+@import "src/assets/sass/vars";
+
+.utility-chart {
+  .title {
+    margin-bottom: 20px;
+    font-family: $secondFontFamily;
+    font-size: 18px;
+    text-align: center;
+  }
+  .board {
+    background-color: $secondBackgroundColor;
+    border: 1px solid $primaryBorderColor;
+    box-shadow: $boardShadow;
+    border-radius: 2px;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid $primaryBorderColor;
+    padding: 10px;
+    font-size: 13px;
+    &-section {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+    .search {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      padding: 0 0 0 10px;
+      margin: 0;
+
+      &-input {
+        border: none;
+        outline: none;
+        width: 60px;
+        transition: width 0.5s;
+        &::placeholder {
+          color: $gray300;
+        }
+        &:focus {
+          width: 100%;
+        }
+      }
+    }
+  }
+  h4 {
+    text-align: center;
+  }
+}
+
+.modal-number-input {
+  border: 1px solid #00d290;
+  width: 130px;
+  color: #00d290;
+}
+
+.round-chart-button {
+  position: relative;
+  margin-left: 10px;
+}

@@ -8,7 +8,7 @@ import { ActivityComponent } from './activity/activity.component';
 import { HomeBuilderComponent } from './home-builder/home-builder.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatButtonModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
 import { CreateToDoPopupComponent } from './home-builder/create-to-do-popup/create-to-do-popup.component';
 import { CreateActivityPopupComponent } from './activity/create-activity-popup/create-activity-popup.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -28,6 +28,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
         MatIconModule,
         BrowserModule,
         FormsModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatFormFieldModule,
         ReactiveFormsModule,
         MatButtonModule,
         MatDialogModule,
@@ -36,7 +40,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     providers: [
     ],
     entryComponents: [
-        CreateToDoPopupComponent
+        CreateToDoPopupComponent,
+        CreateActivityPopupComponent
       ]
 })
 export class DashboardModule { }

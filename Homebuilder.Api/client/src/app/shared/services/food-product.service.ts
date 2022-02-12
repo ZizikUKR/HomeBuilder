@@ -14,8 +14,17 @@ export class FoodProductService {
 
     constructor(private http: HttpClient) { }
 
-    public GetAll(): Observable<GetAllFoodProductsView> {
-        return this.http.get<GetAllFoodProductsView>(this.rootUrl + 'foodProduct/getAll');
+    public GetAll(page: number, pageSize: number, category: string, month: number): Observable<GetAllFoodProductsView> {
+        let params = new HttpParams()
+            .set('page', page.toString())
+            .set('pageSize', pageSize.toString());
+        if (category) {
+            params = params.set('category', category);
+        }
+        if (month) {
+            params.set('month', month.toString());
+        }
+        return this.http.get<GetAllFoodProductsView>(this.rootUrl + 'foodProduct/getAll', { params: params });
     }
 
     public Delete(id: string): Observable<boolean> {

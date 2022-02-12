@@ -1,5 +1,5 @@
 export interface CreateActivityView {
-    scheduledDate: string;
+    scheduledDate: Date;
     title: string;
     description: string;
     code: string;

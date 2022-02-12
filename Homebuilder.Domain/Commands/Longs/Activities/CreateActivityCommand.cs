@@ -11,7 +11,7 @@ namespace Homebuilder.Domain.Commands.Longs.Activities
     {
         public class Command : IRequest
         {
-            public string ScheduledDate { get; set; }
+            public DateTime ScheduledDate { get; set; }
             public string Title { get; set; }
             public string Description { get; set; }
             public string Code { get; set; }
@@ -34,7 +34,7 @@ namespace Homebuilder.Domain.Commands.Longs.Activities
             {
                 var res = new Activity();
                 res.Title = activity.Title;
-                res.ScheduledDate = DateTime.Parse(activity.ScheduledDate);
+                res.ScheduledDate = activity.ScheduledDate;
                 res.Description = activity.Description;
                 res.Code = activity.Code;
 

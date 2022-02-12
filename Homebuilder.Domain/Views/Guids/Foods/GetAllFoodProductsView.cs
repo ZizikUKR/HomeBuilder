@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Homebuilder.Domain.Views.Guids.Foods
 {
-    public class GetAllFoodProductsView
+    public class GetAllFoodProductsView : PagedResponse<FoodProductGetAllViewItem>
     {
-        public IEnumerable<FoodProductGetAllViewItem> Items { get; set; } = new List<FoodProductGetAllViewItem>();
     }
 
     public class FoodProductGetAllViewItem

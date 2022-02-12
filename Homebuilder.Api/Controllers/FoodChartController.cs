@@ -23,5 +23,13 @@ namespace Homebuilder.Api.Controllers
             model.Month = month;
             return Ok(await _mediator.Send(model));
         }
+
+        [HttpGet]
+        public async Task<ActionResult> GetWasteChartData(MonthEnum month)
+        {
+            var model = new GetMonthWasteChartData.Query();
+            model.Month = month;
+            return Ok(await _mediator.Send(model));
+        }
     }
 }

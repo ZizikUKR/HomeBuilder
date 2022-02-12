@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { CreateToDoView } from 'src/app/shared/models/create-to-do-view';
+import { CreateToDoView } from 'src/app/shared/models/to-do/create-to-do-view';
 import { ToDoService } from 'src/app/shared/services/to-do.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Subscription } from 'rxjs';

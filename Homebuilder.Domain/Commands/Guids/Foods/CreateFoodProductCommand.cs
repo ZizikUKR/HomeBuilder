@@ -1,6 +1,5 @@
 ﻿using Homebuilder.Domain.Entities.Guids.Foods;
 using Homebuilder.Domain.Repositories.Guids.Foods;
-using Homebuilder.Domain.Views.Guids.Foods;
 using MediatR;
 using System;
 using System.Threading;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Homebuilder.Domain.Commands.Guids.Foods
 {
-    public class CreateUtilityBillCommand
+    public class CreateFoodProductCommand
     {
         public class Command : IRequest
         {
@@ -39,10 +38,10 @@ namespace Homebuilder.Domain.Commands.Guids.Foods
 
                     await _categoryRepository.Add(category);
                 }
-                await _repository.Add(MapUtilityBillViewToModel(request, category.Id));
+                await _repository.Add(MapWasteProductViewToModel(request, category.Id));
             }
 
-            private FoodProduct MapUtilityBillViewToModel(Command command, string categoryId)
+            private FoodProduct MapWasteProductViewToModel(Command command, string categoryId)
             {
                 var res = new FoodProduct();
                 res.Month = command.Month;
