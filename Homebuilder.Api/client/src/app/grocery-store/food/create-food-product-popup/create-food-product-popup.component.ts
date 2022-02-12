@@ -63,7 +63,6 @@ export class CreateFoodProductPopupComponent implements OnInit {
 
   private initForm(): void {
     const currentDate = new Date();
-    let s = currentDate.getMonth();
     this.foodProductForm = new FormGroup({
       month: new FormControl(currentDate.getMonth() + 1, Validators.required),
       year: new FormControl(currentDate.getFullYear(), Validators.required),
