@@ -88,7 +88,7 @@ namespace Homebuilder.Domain.Services.Longs
             result.IsComppleted = entity.IsComppleted;
             result.ToDo = entity.ToDo;
             result.CreationDate = entity.CreationDate;
-            result.State = state;
+            result.State = state.ToString();
 
             return result;
         }

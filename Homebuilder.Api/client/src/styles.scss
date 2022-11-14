@@ -41,11 +41,15 @@ $angular-theme: mat-light-theme(
 @import "./assets/sass/button";
 
 mat-dialog-container#app-delete-modal {
-  border: 3px solid #262626;
+  border: 3px solid #bdd200;
   border-radius: 11px;
   background-color: #1a1a1a;
+  background: white;
+  color: #039be5;
+  height: 300px;
+  width: 500px;
 }
-mat-dialog-container#app-create-to-do-popup {
+mat-dialog-container#app-create-popup {
   border: 3px solid #00d290;
   border-radius: 11px;
   background-color: #1a1a1a;

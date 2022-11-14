@@ -14,7 +14,7 @@ namespace Homebuilder.Domain.Queries.Longs.ToDos
 {
     public class GetAllTodosQuery
     {
-        public class Query: IRequest<GetAllToDoView> { }
+        public class Query : IRequest<GetAllToDoView> { }
 
         public class Handler : IRequestHandler<Query, GetAllToDoView>
         {
@@ -28,7 +28,7 @@ namespace Homebuilder.Domain.Queries.Longs.ToDos
             {
                 IEnumerable<ToDoTask> existingToDos = await _toDoTaskRepository.GetAll();
                 var result = new GetAllToDoView();
-                result.ToDos = existingToDos.Select(p => MapToDoTaskToView(p)).OrderBy(p => p.ToDo).ToList();
+                result.ToDos = existingToDos.Select(p => MapToDoTaskToView(p)).OrderBy(p => p.CreationDate).ThenBy(p => p.IsComppleted).ToList();
 
                 return result;
             }
@@ -46,7 +46,7 @@ namespace Homebuilder.Domain.Queries.Longs.ToDos
                 result.IsComppleted = entity.IsComppleted;
                 result.ToDo = entity.ToDo;
                 result.CreationDate = entity.CreationDate;
-                result.State = state;
+                result.State = state.ToString();
 
                 return result;
             }

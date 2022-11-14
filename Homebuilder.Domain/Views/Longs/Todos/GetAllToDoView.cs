@@ -16,6 +16,6 @@ namespace Homebuilder.Domain.Views.Longs.Todos
         public string Description { get; set; }
         public string Information { get; set; }
         public bool IsComppleted { get; set; }
-        public StateEnumView State { get; set; }
+        public string State { get; set; }
     }
 }

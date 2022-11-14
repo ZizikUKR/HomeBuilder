@@ -13,7 +13,7 @@ namespace Homebuilder.Domain.Queries.Guids.Foods
 {
     public class GetAllFoodProducts
     {
-        public class Query : PagedRequest, IRequest<GetAllFoodProductsView>
+        public class Query :    PagedRequest, IRequest<GetAllFoodProductsView>
         {
             public string Category { get; set; }
             public int Month { get; set; }

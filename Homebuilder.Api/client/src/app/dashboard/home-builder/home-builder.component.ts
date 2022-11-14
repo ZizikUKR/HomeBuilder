@@ -33,12 +33,9 @@ export class HomeBuilderComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = 'app-delete-modal';
-    dialogConfig.height = '350px';
-    dialogConfig.width = '600px';
     dialogConfig.data = {
-      name: 'deleteProduct',
-      title: 'Are you sure you want to delete this todo?',
-      description: 'If you continue, the todo with name ' + item.toDo + 'will be deleted.',
+      title: 'Todo',
+      description: 'If you continue, the todo with name ' + item.toDo + ' will be deleted.',
       actionButtonText: 'Delete',
       TodoId: item.id
     };
@@ -67,7 +64,7 @@ export class HomeBuilderComponent implements OnInit {
   public openCreateItemModal(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.id = 'app-create-to-do-popup';
+    dialogConfig.id = 'app-create-popup';
     dialogConfig.height = '400px';
     dialogConfig.width = '350px';
 

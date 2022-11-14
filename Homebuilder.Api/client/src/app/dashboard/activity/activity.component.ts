@@ -42,5 +42,4 @@ export class ActivityComponent implements OnInit {
           //TODO upload new data
         });
   }
- 
 }

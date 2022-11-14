@@ -103,7 +103,7 @@ export class AllWasteComponent implements OnInit {
     public openCreateItemModal(): void {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
-        dialogConfig.id = 'app-create-to-do-popup';
+        dialogConfig.id = 'app-create-popup';
         dialogConfig.height = '550px';
         dialogConfig.width = '350px';
 
@@ -117,13 +117,9 @@ export class AllWasteComponent implements OnInit {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.id = 'app-delete-modal';
-        dialogConfig.height = '350px';
-        dialogConfig.width = '600px';
-
         dialogConfig.data = {
-            name: 'deleteProduct',
-            title: 'Are you sure you want to delete this Waste Product?',
-            description: 'If you continue, the food product with category ' + item.category.name + 'will be deleted.',
+            title: 'Waste Product',
+            description: 'If you continue, the food product with category ' + item.category.name + ' will be deleted.',
             actionButtonText: 'Delete',
             TodoId: item.id
         };

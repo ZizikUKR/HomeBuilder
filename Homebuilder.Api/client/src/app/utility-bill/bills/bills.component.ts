@@ -54,7 +54,7 @@ export class BillsComponent implements OnInit {
   public openCreateItemModal(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.id = 'app-create-to-do-popup';
+    dialogConfig.id = 'app-create-popup';
     dialogConfig.height = '450px';
     dialogConfig.width = '400px';
 
@@ -87,15 +87,11 @@ export class BillsComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = 'app-delete-modal';
-    dialogConfig.height = '350px';
-    dialogConfig.width = '600px';
 
     dialogConfig.data = {
-      name: 'deleteProduct',
-      title: 'Are you sure you want to delete this Utility bill?',
-      description: 'If you continue, the food utility bill with category ' + item.name + 'will be deleted.',
-      actionButtonText: 'Delete',
-      TodoId: item.id
+      title: 'Utility bill',
+      description: 'If you continue, the food utility bill with category ' + this.utilityBillNames.get(item.name) + ' will be deleted.',
+      actionButtonText: 'Delete'
     };
     const modalDialog = this.matDialog.open(DeleteModalComponent, dialogConfig);
 
