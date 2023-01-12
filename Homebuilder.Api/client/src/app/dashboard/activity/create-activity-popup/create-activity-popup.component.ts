@@ -44,8 +44,9 @@ export class CreateActivityPopupComponent implements OnInit {
       this.subscription.unsubscribe();
       this.activityForm.reset();
       this.dialogRef.close();
-    }, () => {
-      this.notificationService.error('Error. Somethong went wrong!')
+    }, (e) => {
+      this.notificationService.error('Error. Somethong went wrong!');
+      console.log(e);
     })
   }
 

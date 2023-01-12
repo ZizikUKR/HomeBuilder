@@ -1,0 +1,26 @@
+
+@import "./assets/sass/vars";
+@import "./assets/sass/animation";
+@import "./assets/sass/mixins";
+@import "./assets/sass/reset";
+@import "./assets/sass/fonts";
+
+@import "./assets/sass/template";
+@import "./assets/sass/button";
+
+mat-dialog-container#app-delete-modal {
+  border: 3px solid #bdd200;
+  border-radius: 11px;
+  background-color: #1a1a1a;
+  background: white;
+  color: #039be5;
+  height: 300px;
+  width: 500px;
+}
+mat-dialog-container#app-create-popup {
+  border: 3px solid #00d290;
+  border-radius: 11px;
+  background-color: #1a1a1a;
+  background: white;
+  color: #039be5;
+}
