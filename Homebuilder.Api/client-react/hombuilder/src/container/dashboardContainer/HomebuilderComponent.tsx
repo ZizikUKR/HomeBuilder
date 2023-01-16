@@ -1,10 +1,11 @@
 import React from "react";
+import "./homeBuilderComponent.scss"
 
-export const HomebuilderComponent = () => {
+export const HomeBuilderComponent = () => {
 
     return (
         <>
-            <div>HomebuilderComponent</div>
+            <div>HomeBuilderComponent</div>
         </>
     )
 }

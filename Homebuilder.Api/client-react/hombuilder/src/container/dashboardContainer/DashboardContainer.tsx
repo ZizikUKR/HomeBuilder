@@ -1,15 +1,17 @@
 import React from "react";
 import { AcrivityComponent } from "./AcrivityComponent";
-import { HomebuilderComponent } from "./HomebuilderComponent";
 import "./dasboardComponent.scss"
+import { HomeBuilderComponent } from "./HomeBuilderComponent";
 
 export const DashboardContainer = () => {
 
     return (
         <>
-            <div className="dasboard">
-                <AcrivityComponent></AcrivityComponent>
-                <HomebuilderComponent></HomebuilderComponent>
+            <div className="container-template">
+                <div className="grid-template">
+                    <AcrivityComponent></AcrivityComponent>
+                    <HomeBuilderComponent></HomeBuilderComponent>
+                </div>
             </div>
         </>
     )
