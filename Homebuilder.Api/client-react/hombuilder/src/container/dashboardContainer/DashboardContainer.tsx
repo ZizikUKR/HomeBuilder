@@ -1,7 +1,8 @@
 import React from "react";
 import { AcrivityComponent } from "./AcrivityComponent";
 import "./dasboardComponent.scss"
-import { HomeBuilderComponent } from "./HomeBuilderComponent";
+import { HomeBuilderComponent } from "./HomebuilderComponent";
+
 
 export const DashboardContainer = () => {
 

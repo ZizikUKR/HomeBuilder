@@ -7,19 +7,16 @@ import { ActivityGetAllViewItem } from "../../shared/models/activities/activity-
 import { get } from "../../shared/services/HTTPUserService";
 
 export const AcrivityComponent = () => {
-
-
     const [activities, setActivities] = useState<ActivityGetAllViewItem[]>([]);
 
     useEffect(() => {
-        debugger;
         getAllMessage();
     }, [])
 
     const getAllMessage = () => {
         get(`Activity/GetAll`)
             .then((response) => {
-                setActivities(response);
+                setActivities(response.data.activities);
             });
     }
 
