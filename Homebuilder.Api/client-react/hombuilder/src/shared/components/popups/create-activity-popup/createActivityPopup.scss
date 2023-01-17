@@ -1,0 +1,68 @@
+#modal-content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    color: #00d290;
+}
+
+#modal-title {
+    font-size: 22px;
+    color: #00d290;
+    position: relative;
+    text-align: center;
+}
+
+#modal-footer {
+    justify-self: right;
+    align-self: center;
+}
+
+#modal-action-button {
+    margin-right: 30px;
+    background-color: white;
+    color: #00d290;
+    border: 1px solid #00d290;
+}
+
+#modal-cancel-button {
+    background-color: white;
+    color: #00d290;
+    border: 1px solid #00d290;
+}
+
+.modal-number-input {
+    border: 1px solid #00d290;
+    width: 140px;
+}
+
+.example-full-width {
+    width: 140px;
+}
+
+.mat-form-field-infix {
+    border: 1px solid #00d290;
+}
+
+.modal-body {
+    .form-group {
+        margin-bottom: 1rem;
+    }
+}
+
+.mat-dialog-container {
+    padding: 24px;
+}
+
+.modal-dialog-window {
+    margin-top: 100px;
+    max-width: 350px;
+    max-height: 500px;
+    display: block;
+    padding: 24px;
+    border-radius: 4px;
+    min-height: inherit;
+    max-height: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -7,9 +7,12 @@ import { AiOutlineBell, AiOutlineFileAdd } from "react-icons/ai";
 import { ActivityGetAllViewItem } from "../../../shared/models/activities/activity-get-all-view-item";
 import { get } from "../../../shared/services/HTTPUserService";
 import { MdEdit, MdOutlineDescription } from "react-icons/md";
+import { CreateActivityPopup } from "../../../shared/components/popups/create-activity-popup/CreateActivityPopup";
 
 export const AcrivityComponent = () => {
+
     const [activities, setActivities] = useState<ActivityGetAllViewItem[]>([]);
+    const [ modalCreateOpen, setModalCreateOpen] = useState(false)
 
     useEffect(() => {
         getAllMessage();
@@ -29,7 +32,7 @@ export const AcrivityComponent = () => {
                 <div className="board">
 
                     <header className="header">
-                        <button className="button button-add" type="button" >Add Activity</button>
+                        <button className="button button-add" type="button" onClick={() => setModalCreateOpen(true)}>Add Activity</button>
                         <div className="header-section">
                             <label className="search">
                                 <input className="search-input" type="search" placeholder="Search" />
@@ -341,6 +344,11 @@ export const AcrivityComponent = () => {
                     </ul >
                 </ div >
             </ section >
+
+            <CreateActivityPopup
+                modalIsOpen={modalCreateOpen}
+                closeModal={() => setModalCreateOpen(false)}
+            ></CreateActivityPopup>
         </>
     )
 }

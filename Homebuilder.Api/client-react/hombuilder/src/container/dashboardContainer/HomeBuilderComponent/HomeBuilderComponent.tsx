@@ -4,11 +4,14 @@ import "./homeBuilderComponent.scss";
 import avatar from "../../../assets/images/avatar/avatar.png";
 import { ToDoTaskGetAllViewItem } from "../../../shared/models/to-do/to-do-task-get-all-view-item";
 import { get } from "../../../shared/services/HTTPUserService";
-import { MdDelete, MdDone } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+import { CreateToDoPopup } from "../../../shared/components/popups/create-to-do-popup/CreateToDoPopup";
 
 export const HomeBuilderComponent = () => {
 
     const [toDoList, setToDoList] = useState<ToDoTaskGetAllViewItem[]>([]);
+    const [modalToDOeOpen, setModalToDoOpen] = useState(false)
 
     useEffect(() => {
         getAllToDo();
@@ -27,7 +30,7 @@ export const HomeBuilderComponent = () => {
                 <h2 className="title">Homebuilder</h2>
                 <div className="board">
                     <header className="header">
-                        <button className="button button-add" type="button" >Add Items</button>
+                        <button className="button button-add" type="button" onClick={() => setModalToDoOpen(true)} >Add Items</button>
                         <div className="header-section">
                             <label className="search">
                                 <input className="search-input" type="search" placeholder="Search" />
@@ -45,7 +48,10 @@ export const HomeBuilderComponent = () => {
                             <li className="item">
                                 <div className="item-section">
                                     <button className="button" type="button">
-                                        <MdDone></MdDone>
+                                        <IoCheckmarkDoneCircleOutline
+                                            color="green"
+                                            style={{ zoom: "200%" }}
+                                        ></IoCheckmarkDoneCircleOutline>
                                     </button>
                                     <button className="button" type="button">
                                         <MdDelete></MdDelete>
@@ -70,6 +76,10 @@ export const HomeBuilderComponent = () => {
                         </ul >)
                 })}
             </section >
+            <CreateToDoPopup
+                modalIsOpen={modalToDOeOpen}
+                closeModal={() => setModalToDoOpen(false)}
+            ></CreateToDoPopup>
         </>
     )
 }

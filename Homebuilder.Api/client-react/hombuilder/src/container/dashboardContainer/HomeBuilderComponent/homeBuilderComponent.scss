@@ -1,6 +1,12 @@
 @import 'src/assets/sass/vars';
 
+.done{
+  zoom: 200%;
+  color: green;
+}
+
 .home-builder {
+
   .title {
     margin-bottom: 20px;
     font-family: $secondFontFamily;
