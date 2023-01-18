@@ -12,7 +12,7 @@ import { CreateActivityPopup } from "../../../shared/components/popups/create-ac
 export const AcrivityComponent = () => {
 
     const [activities, setActivities] = useState<ActivityGetAllViewItem[]>([]);
-    const [ modalCreateOpen, setModalCreateOpen] = useState(false)
+    const [modalCreateOpen, setModalCreateOpen] = useState(false)
 
     useEffect(() => {
         getAllMessage();
@@ -88,7 +88,9 @@ export const AcrivityComponent = () => {
                             <div className="article-action">
                                 <div className="dropdown" >
                                     <button className="button" type="button">
-                                        <IoMdAddCircleOutline></IoMdAddCircleOutline>
+                                        <IoMdAddCircleOutline
+                                            style={{ zoom: "150%", color: "darkgrey" }}
+                                        ></IoMdAddCircleOutline>
                                     </button>
 
                                     <ul className="drop-menu">
@@ -143,7 +145,9 @@ export const AcrivityComponent = () => {
                                     <div className="article-action">
                                         <div className="dropdown" >
                                             <button className="button" type="button" >
-                                                <IoMdAddCircleOutline></IoMdAddCircleOutline>
+                                                <IoMdAddCircleOutline
+                                                    style={{ zoom: "150%", color: "darkgrey" }}
+                                                ></IoMdAddCircleOutline>
                                             </button>
 
                                             <ul className="drop-menu">
@@ -198,7 +202,9 @@ export const AcrivityComponent = () => {
                             <div className="article-action">
                                 <div className="dropdown" >
                                     <button className="button"  >
-                                        <IoMdAddCircleOutline></IoMdAddCircleOutline>
+                                        <IoMdAddCircleOutline
+                                            style={{ zoom: "150%", color: "darkgrey" }}
+                                        ></IoMdAddCircleOutline>
                                     </button>
 
                                     <ul className="drop-menu">
@@ -251,7 +257,9 @@ export const AcrivityComponent = () => {
                             <div className="article-action">
                                 <div className="dropdown" >
                                     <button className="button" type="button" >
-                                        <IoMdAddCircleOutline></IoMdAddCircleOutline>
+                                        <IoMdAddCircleOutline
+                                            style={{ zoom: "150%", color: "darkgrey" }}
+                                        ></IoMdAddCircleOutline>
                                     </button>
 
                                     <ul className="drop-menu">
@@ -301,11 +309,11 @@ export const AcrivityComponent = () => {
                                     </div>
                                     <div className="action">
                                         <button className="button" type="button">
-                                        <IoIosAttach></IoIosAttach>
+                                            <IoIosAttach></IoIosAttach>
                                             <span>View Contract</span>
                                         </button>
                                         <button className="button" type="button">
-                                        <MdEdit></MdEdit>
+                                            <MdEdit></MdEdit>
                                             <span>Sign Contract</span>
                                         </button>
                                     </div>
@@ -314,7 +322,9 @@ export const AcrivityComponent = () => {
                             <div className="article-action">
                                 <div className="dropdown" >
                                     <button className="button" type="button" >
-                                        <IoMdAddCircleOutline></IoMdAddCircleOutline>
+                                        <IoMdAddCircleOutline
+                                            style={{ zoom: "150%", color: "darkgrey" }}
+                                        ></IoMdAddCircleOutline>
                                     </button>
 
                                     <ul className="drop-menu">

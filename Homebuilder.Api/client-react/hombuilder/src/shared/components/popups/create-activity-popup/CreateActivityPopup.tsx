@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalBody } from "react-bootstrap";
+import { BsCalendarEvent } from "react-icons/bs";
 import { CreateActivityView } from "../../../models/activities/create-activity-view";
 import { post } from "../../../services/HTTPUserService";
-import "./createActivityPopup.scss"
+import "./createActivityPopup.scss";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+
 
 export interface Props {
     modalIsOpen: boolean;
@@ -13,9 +17,10 @@ export const CreateActivityPopup = (props: Props) => {
 
     const { modalIsOpen, closeModal } = props;
 
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
-    const [code, setCode] = useState("")
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [code, setCode] = useState("");
+    const [date, setDate] = useState(new Date());
 
     const onSubmitForm = (event: any) => {
         event.preventDefault();
@@ -24,7 +29,7 @@ export const CreateActivityPopup = (props: Props) => {
             title: title,
             description: description,
             code: code,
-            scheduledDate: new Date("2023-01-17")
+            scheduledDate: new Date(date)
         }
 
         post(`Activity/Create`, activityGetAllViewItem)
@@ -77,12 +82,16 @@ export const CreateActivityPopup = (props: Props) => {
                                         />
                                     </label>
                                 </div>
-                                <div className="form-group">
-
-                                    <input
-
-                                    />
-
+                                <div className="form-group d-flex">
+                                    <label 
+                                    >Date
+                                        <DatePicker
+                                            selected={date}
+                                            onChange={(date: Date) => setDate(date)}
+                                            className="form-control modal-number-input"
+                                        />
+                                        <BsCalendarEvent />
+                                    </label>
                                 </div>
                             </section>
                             <footer id="modal-footer">
