@@ -1,0 +1,31 @@
+#modal-content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    color: #bdd200;
+}
+
+#modal-title {
+    font-size: 22px;
+    color: #bdd200;
+    position: relative;
+    text-align: center;
+}
+
+#modal-footer {
+    justify-self: right;
+    align-self: center;
+}
+
+#modal-action-button {
+    margin-right: 30px;
+    background-color: white;
+    color: #bdd200;
+    border: 1px solid #bdd200;
+}
+
+#modal-cancel-button {
+    background-color: white;
+    color: #bdd200;
+    border: 1px solid #bdd200;
+}

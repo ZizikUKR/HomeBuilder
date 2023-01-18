@@ -1,4 +1,5 @@
 import axios, * as others from 'axios';
+import { showError, showWarn } from '../toast/notification';
 
 export const get = async (url: string) => {
   return await axios.get(process.env.REACT_APP_API_URL + url);
@@ -12,4 +13,19 @@ export const post = async (url: string, data: any) => {
           "Content-Type": `application/json`
       }
   });
+};
+
+export const deleteRequest = async (url: string) => {
+  await axios
+    .delete(process.env.REACT_APP_API_URL + url, {
+      headers: {
+        Authorization: `Bearer`,
+      },
+    })
+    .then(() => {
+      showWarn("Item was deleted.");
+    })
+    .catch(() => {
+      showError("Something went wrong!");
+    });
 };

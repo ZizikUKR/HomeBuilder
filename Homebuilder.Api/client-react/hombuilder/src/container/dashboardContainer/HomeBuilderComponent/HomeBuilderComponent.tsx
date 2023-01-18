@@ -3,15 +3,19 @@ import { IoIosArrowDown } from "react-icons/io";
 import "./homeBuilderComponent.scss";
 import avatar from "../../../assets/images/avatar/avatar.png";
 import { ToDoTaskGetAllViewItem } from "../../../shared/models/to-do/to-do-task-get-all-view-item";
-import { get } from "../../../shared/services/HTTPUserService";
+import { deleteRequest, get } from "../../../shared/services/HTTPUserService";
 import { MdDelete } from "react-icons/md";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { CreateToDoPopup } from "../../../shared/components/popups/create-to-do-popup/CreateToDoPopup";
+import { DeletedPopup } from "../../../shared/components/popups/deleted-popup/DeletedPopup";
+import { showInfo } from "../../../shared/toast/notification";
 
 export const HomeBuilderComponent = () => {
 
     const [toDoList, setToDoList] = useState<ToDoTaskGetAllViewItem[]>([]);
-    const [modalToDOeOpen, setModalToDoOpen] = useState(false)
+    const [modalToDOeOpen, setModalToDoOpen] = useState(false);
+    const [modalDelete, setModalDelete] = useState(false);
+    const [toDoToDelete, setToDoToDelete] = useState<ToDoTaskGetAllViewItem>();
 
     useEffect(() => {
         getAllToDo();
@@ -22,6 +26,19 @@ export const HomeBuilderComponent = () => {
             .then((response) => {
                 setToDoList(response.data.toDos);
             });
+    }
+
+    const deleteToDo = (id: number) => {
+        deleteRequest(`toDo/delete?id=${id}`)
+            .then(() => {
+                showInfo("Done");
+                setModalDelete(false);
+            });
+    }
+
+    const onDelete = (item: ToDoTaskGetAllViewItem) => {
+        setToDoToDelete(item);
+        setModalDelete(true);
     }
 
     return (
@@ -50,11 +67,14 @@ export const HomeBuilderComponent = () => {
                                     <button className="button" type="button">
                                         <IoCheckmarkDoneCircleOutline
                                             color="green"
-                                            style={{ zoom: "200%" }}
+                                            style={{ zoom: "250%" }}
                                         ></IoCheckmarkDoneCircleOutline>
                                     </button>
-                                    <button className="button" type="button">
-                                        <MdDelete></MdDelete>
+                                    <button className="button" type="button" onClick={() => onDelete(item)}>
+                                        <MdDelete
+                                            color="green"
+                                            style={{ zoom: "250%" }}
+                                        ></MdDelete>
                                     </button>
                                 </div>
                                 <div className="item-section section-info">
@@ -80,6 +100,15 @@ export const HomeBuilderComponent = () => {
                 modalIsOpen={modalToDOeOpen}
                 closeModal={() => setModalToDoOpen(false)}
             ></CreateToDoPopup>
+            {toDoToDelete &&
+                <DeletedPopup
+                    title={toDoToDelete.toDo!}
+                    text={toDoToDelete.description!}
+                    onDelete={() => deleteToDo(toDoToDelete.id!)}
+                    modalIsOpen={modalDelete}
+                    closeModal={() => setModalDelete(false)}
+                ></DeletedPopup>
+            }
         </>
     )
 }
