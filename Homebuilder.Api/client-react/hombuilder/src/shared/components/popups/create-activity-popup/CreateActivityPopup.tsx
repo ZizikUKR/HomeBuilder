@@ -17,7 +17,6 @@ export const CreateActivityPopup = (props: Props) => {
     const [description, setDescription] = useState("")
     const [code, setCode] = useState("")
 
-
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
