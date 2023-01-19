@@ -3,12 +3,12 @@ import { IoIosArrowDown } from "react-icons/io";
 import "./homeBuilderComponent.scss";
 import avatar from "../../../assets/images/avatar/avatar.png";
 import { ToDoTaskGetAllViewItem } from "../../../shared/models/to-do/to-do-task-get-all-view-item";
-import { deleteRequest, get } from "../../../shared/services/HTTPUserService";
+import { deleteRequest, get, put } from "../../../shared/services/HTTPUserService";
 import { MdDelete } from "react-icons/md";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { CreateToDoPopup } from "../../../shared/components/popups/create-to-do-popup/CreateToDoPopup";
 import { DeletedPopup } from "../../../shared/components/popups/deleted-popup/DeletedPopup";
-import { showInfo } from "../../../shared/toast/notification";
+import { UpdateToDoView } from "../../../shared/models/to-do/update-to-do-view";
 
 export const HomeBuilderComponent = () => {
 
@@ -16,7 +16,6 @@ export const HomeBuilderComponent = () => {
     const [modalToDOeOpen, setModalToDoOpen] = useState(false);
     const [modalDelete, setModalDelete] = useState(false);
     const [toDoToDelete, setToDoToDelete] = useState<ToDoTaskGetAllViewItem>();
-
     useEffect(() => {
         getAllToDo();
     }, [])
@@ -28,10 +27,20 @@ export const HomeBuilderComponent = () => {
             });
     }
 
+    const updateStatus = (toDO: ToDoTaskGetAllViewItem) => {
+        const updatedTodo: UpdateToDoView = {
+            id: toDO.id,
+            isComppleted: !toDO.isComppleted
+        };
+        put(`ToDo/Update`, updatedTodo)
+            .then(() => {
+                getAllToDo();
+            })
+    }
+
     const deleteToDo = (id: number) => {
         deleteRequest(`toDo/delete?id=${id}`)
             .then(() => {
-                showInfo("Done");
                 setModalDelete(false);
             });
     }
@@ -64,9 +73,10 @@ export const HomeBuilderComponent = () => {
                         <ul className="list" key={item.id}>
                             <li className="item">
                                 <div className="item-section">
-                                    <button className="button" type="button">
+                                    <button className="button" type="button" >
                                         <IoCheckmarkDoneCircleOutline
-                                            color="green"
+                                            onClick={() => updateStatus(item)}
+                                            color={item.isComppleted == true ? "green" : "darkgrey"}
                                             style={{ zoom: "250%" }}
                                         ></IoCheckmarkDoneCircleOutline>
                                     </button>

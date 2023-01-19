@@ -29,3 +29,13 @@ export const deleteRequest = async (url: string) => {
       showError("Something went wrong!");
     });
 };
+
+export const put = async (url: string, data: any) => {
+  const json = JSON.stringify(data);
+
+  return await axios.put(process.env.REACT_APP_API_URL + url, json, {
+      headers: {
+          "Content-Type": `application/json`
+      }
+  });
+};
