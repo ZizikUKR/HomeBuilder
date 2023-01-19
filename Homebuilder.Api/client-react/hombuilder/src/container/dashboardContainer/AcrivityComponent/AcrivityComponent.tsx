@@ -119,7 +119,7 @@ export const AcrivityComponent = () => {
 
                         {activities.map((item) => {
                             return (
-                                <li className="article poll">
+                                <li className="article poll" key={item.id}>
                                     <div className="article-logo">
                                         <AiOutlineBell></AiOutlineBell>
                                     </div>

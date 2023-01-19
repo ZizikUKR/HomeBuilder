@@ -61,7 +61,7 @@ export const HomeBuilderComponent = () => {
 
                 {toDoList.map((item) => {
                     return (
-                        <ul className="list">
+                        <ul className="list" key={item.id}>
                             <li className="item">
                                 <div className="item-section">
                                     <button className="button" type="button">
