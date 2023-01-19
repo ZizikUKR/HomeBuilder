@@ -8,6 +8,7 @@ import { ActivityGetAllViewItem } from "../../../shared/models/activities/activi
 import { get } from "../../../shared/services/HTTPUserService";
 import { MdEdit, MdOutlineDescription } from "react-icons/md";
 import { CreateActivityPopup } from "../../../shared/components/popups/create-activity-popup/CreateActivityPopup";
+import { BsCalendar4, BsFillChatLeftTextFill } from "react-icons/bs";
 
 export const AcrivityComponent = () => {
 
@@ -23,6 +24,10 @@ export const AcrivityComponent = () => {
             .then((response) => {
                 setActivities(response.data.activities);
             });
+    }
+
+    const toggleViewDropdawn = (event: any) => {
+        event.target.closest('.dropdown').classList.toggle('open');
     }
 
     return (
@@ -87,7 +92,7 @@ export const AcrivityComponent = () => {
                             </div>
                             <div className="article-action">
                                 <div className="dropdown" >
-                                    <button className="button" type="button">
+                                    <button className="button" type="button" onClick={toggleViewDropdawn}>
                                         <IoMdAddCircleOutline
                                             style={{ zoom: "150%", color: "darkgrey" }}
                                         ></IoMdAddCircleOutline>
@@ -96,20 +101,20 @@ export const AcrivityComponent = () => {
                                     <ul className="drop-menu">
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                chat
-                                                <span>Review</span>
+                                                <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                <span className="ps-2">Review</span>
                                             </button>
                                         </li>
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                chat
-                                                <span>Massage</span>
+                                                <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                <span className="ps-2">Massage</span>
                                             </button>
                                         </li>
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                calendar_today
-                                                <span>Reschedule</span>
+                                                <BsCalendar4></BsCalendar4>
+                                                <span className="ps-2">Reschedule</span>
                                             </button>
                                         </li>
                                     </ul>
@@ -144,7 +149,7 @@ export const AcrivityComponent = () => {
                                     </div>
                                     <div className="article-action">
                                         <div className="dropdown" >
-                                            <button className="button" type="button" >
+                                            <button className="button" type="button" onClick={toggleViewDropdawn}>
                                                 <IoMdAddCircleOutline
                                                     style={{ zoom: "150%", color: "darkgrey" }}
                                                 ></IoMdAddCircleOutline>
@@ -153,20 +158,20 @@ export const AcrivityComponent = () => {
                                             <ul className="drop-menu">
                                                 <li className="drop-item">
                                                     <button className="button" type="button">
-                                                        chat
-                                                        <span>Review</span>
+                                                        <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                        <span className="ps-2">Review</span>
                                                     </button>
                                                 </li>
                                                 <li className="drop-item">
                                                     <button className="button" type="button">
-                                                        chat
-                                                        <span>Massage</span>
+                                                        <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                        <span className="ps-2">Massage</span>
                                                     </button>
                                                 </li>
                                                 <li className="drop-item">
                                                     <button className="button" type="button">
-                                                        calendar_today
-                                                        <span>Reschedule</span>
+                                                        <BsCalendar4></BsCalendar4>
+                                                        <span className="ps-2">Reschedule</span>
                                                     </button>
                                                 </li>
                                             </ul>
@@ -201,7 +206,7 @@ export const AcrivityComponent = () => {
                             </div>
                             <div className="article-action">
                                 <div className="dropdown" >
-                                    <button className="button"  >
+                                    <button className="button" onClick={toggleViewDropdawn}>
                                         <IoMdAddCircleOutline
                                             style={{ zoom: "150%", color: "darkgrey" }}
                                         ></IoMdAddCircleOutline>
@@ -210,20 +215,20 @@ export const AcrivityComponent = () => {
                                     <ul className="drop-menu">
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                chat
-                                                <span>Review</span>
+                                                <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                <span className="ps-2">Review</span>
                                             </button>
                                         </li>
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                chat
-                                                <span>Massage</span>
+                                                <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                <span className="ps-2">Massage</span>
                                             </button>
                                         </li>
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                calendar_today
-                                                <span>Reschedule</span>
+                                                <BsCalendar4></BsCalendar4>
+                                                <span className="ps-2">Reschedule</span>
                                             </button>
                                         </li>
                                     </ul>
@@ -256,7 +261,7 @@ export const AcrivityComponent = () => {
                             </div>
                             <div className="article-action">
                                 <div className="dropdown" >
-                                    <button className="button" type="button" >
+                                    <button className="button" type="button" onClick={toggleViewDropdawn}>
                                         <IoMdAddCircleOutline
                                             style={{ zoom: "150%", color: "darkgrey" }}
                                         ></IoMdAddCircleOutline>
@@ -265,20 +270,20 @@ export const AcrivityComponent = () => {
                                     <ul className="drop-menu">
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                chat
-                                                <span>Review</span>
+                                                <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                <span className="ps-2">Review</span>
                                             </button>
                                         </li>
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                chat
-                                                <span>Massage</span>
+                                                <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                <span className="ps-2">Massage</span>
                                             </button>
                                         </li>
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                calendar_today
-                                                <span>Reschedule</span>
+                                                <BsCalendar4></BsCalendar4>
+                                                <span className="ps-2">Reschedule</span>
                                             </button>
                                         </li>
                                     </ul>
@@ -321,7 +326,7 @@ export const AcrivityComponent = () => {
                             </div>
                             <div className="article-action">
                                 <div className="dropdown" >
-                                    <button className="button" type="button" >
+                                    <button className="button" type="button" onClick={toggleViewDropdawn}>
                                         <IoMdAddCircleOutline
                                             style={{ zoom: "150%", color: "darkgrey" }}
                                         ></IoMdAddCircleOutline>
@@ -330,20 +335,20 @@ export const AcrivityComponent = () => {
                                     <ul className="drop-menu">
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                chat
-                                                <span>Review</span>
+                                                <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                <span className="ps-2">Review</span>
                                             </button>
                                         </li>
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                chat
-                                                <span>Massage</span>
+                                                <BsFillChatLeftTextFill></BsFillChatLeftTextFill>
+                                                <span className="ps-2">Massage</span>
                                             </button>
                                         </li>
                                         <li className="drop-item">
                                             <button className="button" type="button">
-                                                calendar_today
-                                                <span>Reschedule</span>
+                                                <BsCalendar4></BsCalendar4>
+                                                <span className="ps-2">Reschedule</span>
                                             </button>
                                         </li>
                                     </ul>
