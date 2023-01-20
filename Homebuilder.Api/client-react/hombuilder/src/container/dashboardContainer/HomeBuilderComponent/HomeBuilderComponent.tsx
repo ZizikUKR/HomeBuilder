@@ -9,6 +9,7 @@ import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { CreateToDoPopup } from "../../../shared/components/popups/create-to-do-popup/CreateToDoPopup";
 import { DeletedPopup } from "../../../shared/components/popups/deleted-popup/DeletedPopup";
 import { UpdateToDoView } from "../../../shared/models/to-do/update-to-do-view";
+import { StateEnum } from "../../../shared/models/enums/state-enum";
 
 export const HomeBuilderComponent = () => {
 
@@ -16,6 +17,7 @@ export const HomeBuilderComponent = () => {
     const [modalToDOeOpen, setModalToDoOpen] = useState(false);
     const [modalDelete, setModalDelete] = useState(false);
     const [toDoToDelete, setToDoToDelete] = useState<ToDoTaskGetAllViewItem>();
+
     useEffect(() => {
         getAllToDo();
     }, [])
@@ -48,6 +50,18 @@ export const HomeBuilderComponent = () => {
     const onDelete = (item: ToDoTaskGetAllViewItem) => {
         setToDoToDelete(item);
         setModalDelete(true);
+    }
+
+    const getChipsColour = (state: StateEnum) => {
+        if (state === StateEnum.Final) {
+            return "chips colorGreen";
+        }
+        if (state === StateEnum.HighPrice) {
+            return "chips chipColorRed";
+        }
+        if (state === StateEnum.Medium) {
+            return "chips colorYellow";
+        }
     }
 
     return (
@@ -93,7 +107,7 @@ export const HomeBuilderComponent = () => {
                                 </div>
                                 <div className="item-section ">
                                     <p>{item?.information}</p>
-                                    <p className="chips" >
+                                    <p className={getChipsColour(item.state!)} >
                                         {item.state}
                                     </p>
                                 </div >
