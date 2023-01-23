@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { FoodProductGetAllViewItem } from "../../../shared/models/food-products/food-product-get-all-view-item";
-import { get } from "../../../shared/services/HTTPUserService";
+import { deleteRequest, get } from "../../../shared/services/HTTPUserService";
 import "./foodProductsComponent.scss";
 import avatar from "../../../assets/images/avatar/avatar.png";
 import { MdDelete } from "react-icons/md";
+import { CreateFoodProductPopup } from "../../../shared/components/popups/create-food-product-popup/CreateFoodProductPopup";
+import { DeletedPopup } from "../../../shared/components/popups/deleted-popup/DeletedPopup";
 
 export const FoodProductsComponent = () => {
 
+    const [modalToDOeOpen, setModalToDoOpen] = useState(false);
+    const [modalDelete, setModalDelete] = useState(false);
     const [food, setFood] = useState<FoodProductGetAllViewItem[]>([]);
+    const [foodToDelete, setFoodToDelete] = useState<FoodProductGetAllViewItem>();
 
     useEffect(() => {
         getAllFood();
@@ -19,6 +24,18 @@ export const FoodProductsComponent = () => {
         get(`FoodProduct/GetAll?page=1&pageSize=20`).then((response) => {
             setFood(response.data.items);
         });
+    }
+    
+    const deleteFood = (id: string) => {
+        deleteRequest(`foodProduct/Delete?id=${id}`)
+            .then(() => {
+                setModalDelete(false);
+            });
+    }
+    
+    const onDelete = (item: FoodProductGetAllViewItem) => {
+        setFoodToDelete(item);
+        setModalDelete(true);
     }
 
     const getChipsColour = (price: number) => {
@@ -39,7 +56,7 @@ export const FoodProductsComponent = () => {
                 <h2 className="title">Food</h2>
                 <div className="board">
                     <header className="header">
-                        <button className="button button-add" type="button" >Add Food</button>
+                        <button className="button button-add" type="button" onClick={() => setModalToDoOpen(true)}>Add Food</button>
                         <div className="header-section">
                             <label className="search">
                                 <input type="text" className="search-input" placeholder="Pick one" aria-label="Category" />
@@ -54,7 +71,7 @@ export const FoodProductsComponent = () => {
                             <ul className="list" key={item.id}>
                                 <li className="item" >
                                     <div className="item-section">
-                                        <button className="button" type="button">
+                                        <button className="button" type="button" onClick={() => onDelete(item)}>
                                             <MdDelete
                                                 color="green"
                                                 style={{ zoom: "250%" }}
@@ -80,6 +97,19 @@ export const FoodProductsComponent = () => {
                         )
                     })}
                 </div >
+                {foodToDelete &&
+                <DeletedPopup
+                    title={foodToDelete.category.name!}
+                    text={foodToDelete.category.name!}
+                    onDelete={() => deleteFood(foodToDelete.id)}
+                    modalIsOpen={modalDelete}
+                    closeModal={() => setModalDelete(false)}
+                ></DeletedPopup>
+            }
+                <CreateFoodProductPopup
+                    modalIsOpen={modalToDOeOpen}
+                    closeModal={() => setModalToDoOpen(false)}
+                ></CreateFoodProductPopup>
             </section >
         </>
     )

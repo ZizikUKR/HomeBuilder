@@ -17,7 +17,6 @@ export const CreateToDoPopup = (props: Props) => {
     const [description, setDescription] = useState("");
     const [information, setInformation] = useState("");
 
-
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
