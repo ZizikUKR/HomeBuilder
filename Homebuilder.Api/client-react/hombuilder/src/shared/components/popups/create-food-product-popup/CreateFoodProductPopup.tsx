@@ -99,6 +99,7 @@ export const CreateFoodProductPopup = (props: Props) => {
                                 </div>
                                 <div className="form-group">
                                     <input
+                                        className="form-control modal-number-input"
                                         type="text"
                                         placeholder="Category"
                                         onChange={(e) => setCategory(e.target.value)}
