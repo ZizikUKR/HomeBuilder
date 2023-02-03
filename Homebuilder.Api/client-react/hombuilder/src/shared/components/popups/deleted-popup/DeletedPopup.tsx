@@ -25,7 +25,7 @@ export const DeletedPopup = (props: Props) => {
                         </header>
                         <section id="modal-body">
                             <p>
-                                Delete {text} ?
+                                Delete "{text}" ?
                             </p>
                         </section>
                         <footer id="modal-footer">

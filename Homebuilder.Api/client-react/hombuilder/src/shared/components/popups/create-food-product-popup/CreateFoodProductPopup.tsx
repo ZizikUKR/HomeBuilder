@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button, Modal, ModalBody } from "react-bootstrap";
 import { BsCalendarEvent } from "react-icons/bs";
 import { MonthEnum } from "../../../models/enums/month-enum";
 import "./createFoodProductPopup.scss";
 import DatePicker from "react-datepicker";
 import { CreateFoodProductView } from "../../../models/food-products/create-food-product-view";
-import { post } from "../../../services/HTTPUserService";
+import { get, post } from "../../../services/HTTPUserService";
+import { Typeahead } from "react-bootstrap-typeahead";
+import { GetAllFoodCategoriesViewItem } from "../../../models/food-products/get-all-food-categories-view";
 
 export interface Props {
     modalIsOpen: boolean;
@@ -18,8 +20,15 @@ export const CreateFoodProductPopup = (props: Props) => {
     const [price, setPrice] = useState(0);
     const [year, setYear] = useState(0);
     const [month, setMonth] = useState(MonthEnum.None);
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState<any>();
     const [date, setDate] = useState(new Date());
+
+    const [foodCategory, setFoodCategory] = useState<GetAllFoodCategoriesViewItem[]>([]);
+
+
+    useEffect(() => {
+        getAllFoodCategoryes();
+    }, [])
 
     const onSubmitForm = (event: any) => {
         event.preventDefault();
@@ -40,6 +49,14 @@ export const CreateFoodProductPopup = (props: Props) => {
                 setDate(new Date());
             });
         closeModal();
+    }
+
+    const getAllFoodCategoryes = () => {
+        get(`foodCategory/getProductCreationData`)
+            .then((response) => {
+                const categories = response.data.categories.map((item: string) => { return { id: item, name: item } })
+                setFoodCategory(categories);
+            });
     }
 
     return (
@@ -98,12 +115,19 @@ export const CreateFoodProductPopup = (props: Props) => {
                                     </label>
                                 </div>
                                 <div className="form-group">
-                                    <input
-                                        className="form-control modal-number-input"
-                                        type="text"
-                                        placeholder="Category"
-                                        onChange={(e) => setCategory(e.target.value)}
-                                    />
+                                    <label
+                                    >Category
+
+                                        <Typeahead
+                                            id="id"
+                                            labelKey="name"
+                                            className="form-control modal-number-input"
+                                            allowNew={true}
+                                            options={foodCategory}
+                                            onChange={(selected) => setCategory(selected[0])}
+                                        />
+
+                                    </label>
                                 </div>
 
                                 <div className="form-group">
@@ -112,7 +136,6 @@ export const CreateFoodProductPopup = (props: Props) => {
                                         onChange={(date: Date) => setDate(date)}
                                         className="form-control modal-number-input"
                                     />
-                                    <BsCalendarEvent />
                                 </div>
                             </section>
                             <footer id="modal-footer">
@@ -131,7 +154,6 @@ export const CreateFoodProductPopup = (props: Props) => {
                             </footer >
                         </form >
                     </div >
-
 
                 </ModalBody >
             </Modal >

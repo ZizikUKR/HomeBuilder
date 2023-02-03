@@ -51,7 +51,6 @@
                 }
             }
 
-
         }
     }
 
@@ -60,6 +59,7 @@
             border-top: 0.5px solid $primaryBorderColor;
         }
 
+        border-bottom: 0.5px solid $primaryBorderColor;
         display: grid;
         grid-template-columns: 55px 1fr;
         grid-gap: 10px;
