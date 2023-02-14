@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal, ModalBody } from "react-bootstrap";
-import { BsCalendarEvent } from "react-icons/bs";
 import { MonthEnum } from "../../../models/enums/month-enum";
 import "./createFoodProductPopup.scss";
 import DatePicker from "react-datepicker";
@@ -28,6 +27,8 @@ export const CreateFoodProductPopup = (props: Props) => {
 
     useEffect(() => {
         getAllFoodCategoryes();
+        setYear(date.getFullYear());
+        setMonth(date.getMonth() + 1);
     }, [])
 
     const onSubmitForm = (event: any) => {
@@ -37,7 +38,7 @@ export const CreateFoodProductPopup = (props: Props) => {
             price: price,
             year: year,
             month: month,
-            category: category,
+            category: category.name,
             orderDay: date
         }
         post(`foodProduct/create`, activityGetAllViewItem)
@@ -91,13 +92,18 @@ export const CreateFoodProductPopup = (props: Props) => {
                                             min="0"
                                             placeholder="year"
                                             onChange={(e) => setYear(+e.target.value)}
+                                            value={year}
                                         />
                                     </label>
                                 </div>
                                 <div className="form-group">
                                     <label
                                     >Month
-                                        <select className="form-control modal-number-input" placeholder="month" onChange={(e) => setMonth(+e.target.value)}>
+                                        <select className="form-control modal-number-input"
+                                            placeholder="month"
+                                            onChange={(e) => setMonth(+e.target.value)}
+                                            value={month}
+                                        >
                                             <option key={MonthEnum.None} value={MonthEnum.None} >month</option>
                                             <option key={MonthEnum.January} value={MonthEnum.January} >January</option>
                                             <option key={MonthEnum.February} value={MonthEnum.February} >February</option>
