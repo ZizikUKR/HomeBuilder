@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
+import "./create-waste-popup.component.scss";
 import { Button, Modal, ModalBody } from "react-bootstrap";
-import { MonthEnum } from "../../../models/enums/month-enum";
-import "./createFoodProductPopup.scss";
-import DatePicker from "react-datepicker";
-import { CreateFoodProductView } from "../../../models/food-products/create-food-product-view";
-import { get, post } from "../../../services/HTTPUserService";
 import { Typeahead } from "react-bootstrap-typeahead";
+import { MonthEnum } from "../../../models/enums/month-enum";
 import { GetAllFoodCategoriesViewItem } from "../../../models/food-products/get-all-food-categories-view";
+import DatePicker from "react-datepicker";
+import { get, post } from "../../../services/HTTPUserService";
+import { CreateWasteProductView } from "../../../models/food-waste/create-waste-product-view";
 
 export interface Props {
     modalIsOpen: boolean;
     closeModal: () => void;
 }
 
-export const CreateFoodProductPopup = (props: Props) => {
+export const CreateWasteProductPopup = (props: Props) => {
 
     const { modalIsOpen, closeModal } = props;
     const [price, setPrice] = useState(0);
@@ -21,7 +21,6 @@ export const CreateFoodProductPopup = (props: Props) => {
     const [month, setMonth] = useState(MonthEnum.None);
     const [category, setCategory] = useState<any>();
     const [date, setDate] = useState(new Date());
-
     const [foodCategory, setFoodCategory] = useState<GetAllFoodCategoriesViewItem[]>([]);
 
     useEffect(() => {
@@ -33,14 +32,14 @@ export const CreateFoodProductPopup = (props: Props) => {
     const onSubmitForm = (event: any) => {
         event.preventDefault();
 
-        let activityGetAllViewItem: CreateFoodProductView = {
-            price: price,
-            year: year,
+        let activityGetAllViewItem: CreateWasteProductView = {
             month: month,
-            category: category.name,
-            orderDay: date
+            year: year,
+            price: price,
+            orderDay: date,
+            category: category.name
         }
-        post(`foodProduct/create`, activityGetAllViewItem)
+        post(`WasteProduct/Create`, activityGetAllViewItem)
             .then(() => {
                 setPrice(0);
                 setYear(0);
@@ -63,28 +62,27 @@ export const CreateFoodProductPopup = (props: Props) => {
         <>
             <Modal show={modalIsOpen} onHide={closeModal} className="modal-dialog-window">
                 <ModalBody className="mat-dialog-container">
-
                     <div id="modal-content-wrapper">
                         <header id="modal-header">
-                            <h1 id="modal-title">Create food product</h1>
+                            <h1 id="modal-title">Create waste product</h1>
                         </header>
-                        <form >
+                        <form>
                             <section id="modal-body">
+
                                 <div className="form-group">
-                                    <label
-                                    >Price
+                                    <label>Price
                                         <input
                                             className="form-control modal-number-input"
                                             type="number"
                                             min="0"
                                             placeholder="price"
                                             onChange={(e) => setPrice(+e.target.value)}
+                                            value={price}
                                         />
                                     </label>
                                 </div>
                                 <div className="form-group">
-                                    <label
-                                    >Year
+                                    <label>Year
                                         <input
                                             className="form-control modal-number-input"
                                             type="number"
@@ -119,6 +117,7 @@ export const CreateFoodProductPopup = (props: Props) => {
                                         </select>
                                     </label>
                                 </div>
+
                                 <div className="form-group">
                                     <label
                                     >Category
@@ -142,26 +141,20 @@ export const CreateFoodProductPopup = (props: Props) => {
                                         className="form-control modal-number-input"
                                     />
                                 </div>
-                            </section>
+
+                            </section >
                             <footer id="modal-footer">
-                                <Button
-                                    id="modal-action-button"
-                                    onClick={onSubmitForm}
-                                >
+                                <Button mat-raised-button id="modal-action-button" onClick={onSubmitForm}>
                                     Create
                                 </Button>
-                                <Button
-                                    id="modal-cancel-button"
-                                    onClick={closeModal}
-                                >
+                                <Button mat-raised-button id="modal-cancel-button" onClick={closeModal} >
                                     Cancel
-                                </Button >
+                                </Button>
                             </footer >
                         </form >
                     </div >
-
-                </ModalBody >
+                </ModalBody>
             </Modal >
         </>
     )
-} 
+}

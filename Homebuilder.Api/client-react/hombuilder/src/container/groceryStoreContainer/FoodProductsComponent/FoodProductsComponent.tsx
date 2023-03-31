@@ -7,6 +7,7 @@ import avatar from "../../../assets/images/avatar/avatar.png";
 import { MdDelete } from "react-icons/md";
 import { CreateFoodProductPopup } from "../../../shared/components/popups/create-food-product-popup/CreateFoodProductPopup";
 import { DeletedPopup } from "../../../shared/components/popups/deleted-popup/DeletedPopup";
+import { MonthEnum } from "../../../shared/models/enums/month-enum";
 
 export const FoodProductsComponent = () => {
 
@@ -25,14 +26,14 @@ export const FoodProductsComponent = () => {
             setFood(response.data.items);
         });
     }
-    
+
     const deleteFood = (id: string) => {
         deleteRequest(`foodProduct/Delete?id=${id}`)
             .then(() => {
                 setModalDelete(false);
             });
     }
-    
+
     const onDelete = (item: FoodProductGetAllViewItem) => {
         setFoodToDelete(item);
         setModalDelete(true);
@@ -80,7 +81,7 @@ export const FoodProductsComponent = () => {
                                     </div>
                                     <div className="item-section section-info">
                                         <p className="item-title">{item?.category.name}</p>
-                                        {/* <p className="item-description">{months[item?.month]}</p> */}
+                                        <p className="item-description">{MonthEnum[item?.month]}</p>
                                     </div>
                                     <div className="item-section">
                                         <p className={getChipsColour(item.price)}>
@@ -98,14 +99,14 @@ export const FoodProductsComponent = () => {
                     })}
                 </div >
                 {foodToDelete &&
-                <DeletedPopup
-                    title={foodToDelete.category.name!}
-                    text={foodToDelete.category.name!}
-                    onDelete={() => deleteFood(foodToDelete.id)}
-                    modalIsOpen={modalDelete}
-                    closeModal={() => setModalDelete(false)}
-                ></DeletedPopup>
-            }
+                    <DeletedPopup
+                        title={foodToDelete.category.name!}
+                        text={foodToDelete.category.name!}
+                        onDelete={() => deleteFood(foodToDelete.id)}
+                        modalIsOpen={modalDelete}
+                        closeModal={() => setModalDelete(false)}
+                    ></DeletedPopup>
+                }
                 <CreateFoodProductPopup
                     modalIsOpen={modalToDOeOpen}
                     closeModal={() => setModalToDoOpen(false)}
