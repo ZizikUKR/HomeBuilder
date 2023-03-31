@@ -1,44 +1,56 @@
 import React, { useEffect, useState } from "react";
 import "./allWasteComponent.scss";
 import avatar from "../../../assets/images/avatar/avatar.png";
-import { HomeBuilderConstants } from "../../../shared/models/constants/home-builder.constants";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
-import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { FoodProductGetAllViewItem } from "../../../shared/models/food-products/food-product-get-all-view-item";
-import { get } from "../../../shared/services/HTTPUserService";
+import { deleteRequest, get } from "../../../shared/services/HTTPUserService";
+import { CreateWasteProductPopup } from "../../../shared/components/popups/create-waste-product-popup/CreateWasteProductPopup";
+import { DeletedPopup } from "../../../shared/components/popups/deleted-popup/DeletedPopup";
+import { MonthEnum } from "../../../shared/models/enums/month-enum";
 
 export const AllWasteComponent = () => {
 
     const [modalOpen, setModalOpen] = useState(false);
-    const [foodProducts, setFoodProducts] = useState<FoodProductGetAllViewItem[]>([]);
-    const [item, setItem] = useState();
-    const [months] = useState("");
+    const [wasteProducts, setWasteProducts] = useState<FoodProductGetAllViewItem[]>([]);
+    const [wasteProductDelete, setWasteProductDelete] = useState<FoodProductGetAllViewItem>();
+    const [modalDelete, setModalDelete] = useState(false);
 
     useEffect(() => {
         getAllToDo();
     }, [])
 
     const getAllToDo = () => {
-        get(`WasteProduct/GetAll`)
+        get(`WasteProduct/GetAll?page=1&pageSize=20`)
             .then((response) => {
                 debugger;
-                setFoodProducts(response.data.items);
+                setWasteProducts(response.data.items);
             });
     }
 
     const getChipsColour = (price: number) => {
         if (price <= 50) {
-            return HomeBuilderConstants.chipColorGreen;
+            return "chips colorGreen";
         }
         if (price <= 100) {
-            return HomeBuilderConstants.chipColorYellow;
+            return "chips colorYellow";
         }
         if (price >= 101) {
-            return HomeBuilderConstants.chipColorRed;
+            return "chips colorRed";
         }
     }
 
+    const onDelete = (item: FoodProductGetAllViewItem) => {
+        setWasteProductDelete(item);
+        setModalDelete(true);
+    }
+
+    const deleteWaste = (id: string) => {
+        deleteRequest(`WasteProduct/Delete?id=${id}`)
+            .then(() => {
+                setModalDelete(false);
+            });
+    }
 
     return (
         <div>
@@ -66,19 +78,13 @@ export const AllWasteComponent = () => {
                         </div>
                     </header>
 
-                    {foodProducts.map((item) => {
+                    {wasteProducts.map((item) => {
                         return (
 
                             <ul className="list">
                                 <li className="item">
                                     <div className="item-section">
-                                        <button className="button" type="button">
-                                            <IoCheckmarkDoneCircleOutline
-                                                color="green"
-                                                style={{ zoom: "250%" }}
-                                            ></IoCheckmarkDoneCircleOutline>
-                                        </button>
-                                        <button className="button" type="button">
+                                        <button className="button" type="button" onClick={() => onDelete(item)}>
                                             <MdDelete
                                                 color="green"
                                                 style={{ zoom: "250%" }}
@@ -87,12 +93,11 @@ export const AllWasteComponent = () => {
                                     </div >
                                     <div className="item-section section-info">
                                         <p className="item-title">{item?.category.name}</p>
-                                        <p className="item-description">{months[item?.month]}</p>
+                                        <p className="item-description">{MonthEnum[item?.month]}</p>
                                     </div>
                                     <div className="item-section">
-                                        {/* <p>{item?.price} GRN</p> */}
-                                        <p className="chips">
-                                            {/* {getChipsColour({item.price})} GRN  */}
+                                        <p className={getChipsColour(item.price)}>
+                                            {item.price} GRN
                                         </p>
                                     </div >
                                     <div className="item-section">
@@ -109,6 +114,19 @@ export const AllWasteComponent = () => {
                 {/* <mat [length] = "length"[pageSize] = "pageSize"(page) = "onPaginateFood($event)" >
             </mat - paginator > */}
             </section >
+            <CreateWasteProductPopup
+                modalIsOpen={modalOpen}
+                closeModal={() => setModalOpen(false)}
+            ></CreateWasteProductPopup>
+            {wasteProductDelete &&
+                <DeletedPopup
+                    title={wasteProductDelete?.category.name!}
+                    text={wasteProductDelete?.category.name!}
+                    onDelete={() => deleteWaste(wasteProductDelete.id)}
+                    modalIsOpen={modalDelete}
+                    closeModal={() => setModalDelete(false)}
+                ></DeletedPopup>
+            }
         </div>
     )
 }
